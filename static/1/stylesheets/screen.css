@@ -1,0 +1,10 @@
+@import url(reset.css);
+@import url(global.css);
+@import url(index.css);
+@import url(video.css);
+@import url(series.css);
+
+@font-face {
+    font-family: Pictos;
+    src: url(/Pictos.otf);
+}

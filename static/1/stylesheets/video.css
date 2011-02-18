@@ -1,0 +1,218 @@
+/* Single Video Page */
+
+body.video #content {
+  padding: 0 !important;
+}
+
+body.video #wrapper {
+  width: 100%;
+  margin: 0;
+}
+
+body.video #content #video_header {
+  width: 100%;
+  margin: 0 auto -10px auto;
+  padding: 30px 0 40px 0;
+}
+
+body.video #content #video_header #video_header_content {
+  width: 960px;
+  margin: 0 auto;
+}
+
+body.video #content #content_wrapper {
+  width: 960px;
+  margin: 0 auto;
+}
+
+body.video #content #video_title {
+  float: left;
+}
+
+body.video #content #subscribe {
+  float: right;
+  margin: 18px 0 0 0;
+}
+
+body.video #content #subscribe a {
+  font-size: 13px;
+}
+
+body.video #content #subscribe a#miro {
+  margin: 0 0 0 35px;
+}
+
+body.video #content #subscribe a#miro, body.video #content #subscribe a#miro .icon {
+  color: #af3844;
+}
+
+body.video #content #subscribe a:hover#miro, body.video #content #subscribe a:hover#miro .icon {
+  color: #a85a62;
+}
+
+body.video #content h1 {
+  font-size: 25px;
+  letter-spacing: -1px;
+  margin: 0 0 10px 0;
+}
+
+body.video #content span#contributed, body.video #content span#comments {
+  font-size: 13px;
+}
+
+body.video #content span#comments a em.icon {
+  font-size: 14px;
+}
+
+body.video #content #video_container {
+  background: #111;
+  width: 100%;
+  margin: 0;
+}
+
+body.video #content #video_container #video_port {
+  width: 960px;
+  margin: 0 auto;
+}
+
+body.video #content #video_container #video_port .icon {
+  font-size: 150px;
+  line-height: 0;
+  height: 0;
+  text-align: center;
+  color: rgba(255,255,255, 0.3);
+  display: block;
+}
+
+body.video #content #video_meta {
+  background: #DDD;
+  -webkit-border-bottom-left-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  padding: 10px;
+  font-size: 13px;
+  margin: -10px 0 20px 0;
+}
+
+body.video #content #video_meta #category {
+  float: right;
+}
+
+body.video #content #video_meta #category em.icon {
+  position: relative;
+  top: 2px;
+}
+
+body.video #content .facebook_container {
+  float: left;
+  width: 400px;
+}
+
+body.video #content #video_interact {
+  width: 650px;
+  float: left;
+}
+
+body.video #content #video_description h2 {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  margin: 0 0 10px 0;
+  padding: 0 0 10px 0;
+  border-bottom: 1px #CCC solid;
+}
+
+body.video #content #video_description p {
+  font-size: 16px;
+  line-height: 32px;
+}
+
+body.video #content #video_description a#original_video {
+  margin: 20px 0 0 0;
+  display: inline-block;
+}
+
+body.video #content #video_description a#original_video, body.video #content #video_description a#original_video em.icon {
+  font-size: 14px;
+}
+
+body.video #content .sidebar {
+  width: 250px;
+  float: left;
+  margin: 5px 0 0 60px;
+}
+
+body.video #content .video_side {
+  margin: 0 0 20px 0;
+}
+
+body.video #content .video_side h2 {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  margin: 0 0 10px 0;
+  padding: 0 0 10px 0;
+  border-bottom: 1px #CCC solid;
+}
+
+body.video #content .video_side p {
+  font-size: 15px;
+  line-height: 32px;
+}
+
+body.video #content #about_author .img {
+  width: 100px;
+  height: 100px;
+  background: #000;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  float: left;
+  margin: 0 10px 0 0;
+}
+
+body.video #content #share_video ul li a {
+  background: #DDD;
+  padding: 20px;
+  width: 210px;
+  display: block;
+  margin: 10px 0 10px 0;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+body.video #content #related_videos {
+  margin: 20px 0 0 0;
+}
+
+body.video #content #related_videos ul.video_list li.video_item {
+  width: 201px;
+}
+
+body.video #content #related_videos ul.video_list li.video_item .video_item_img a {
+  width: 201px;
+}
+
+body.video #content #related_videos ul.video_list li.video_item h2 {
+  font-size: 14px;
+}
+
+body.video #content #related_videos ul.video_list li.video_item .video_item_img a img {
+  width: 201px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius:    5px;
+}
+
+body.video #content #related_videos ul.video_list li.video_item .video_item_img a em.icon {
+  text-align: center;
+  display: block;
+  position: relative;
+  top: 60px;
+  left: 10px;
+  color: rgba(255,255,255, 0.4);
+  line-height: 0;
+  height: 0;
+  font-size: 60px;
+}
+
+body.video #content #related_videos ul.video_list li.video_item .video_item_img a:hover em.icon {
+  color: rgba(255,255,255, 0.8);
+}
