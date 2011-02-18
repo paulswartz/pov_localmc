@@ -1,0 +1,381 @@
+{% extends "localtv/base.html" %}
+{% comment %}
+Copyright 2009 - Participatory Culture Foundation
+
+This file is part of Miro Community.
+
+Miro Community is free software: you can redistribute it and/or modify it
+under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Miro Community is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
+
+
+{% load video i18n comments filters uploadtemplate_tags editable_widget localtv_thumbnail email_share_tags cache video_list %}
+
+{% block body_id %}view_video{% endblock %}
+
+
+{% block title %}{{ current_video.name }} - {{ block.super }}{% endblock %}
+
+{% block head %}
+  {% if user_is_admin %}
+  {% include "localtv/inline_edit/header.html" %}
+  {% endif %}
+  {% get_comment_form for current_video as comment_form %}
+  {% if comment_form.fields.captcha %}<script type="text/javascript"
+          src="http://api.recaptcha.net/js/recaptcha_ajax.js"></script>
+  <script type="text/javascript">
+      function recaptcha_ajax_callback() {
+          Recaptcha.create("{{ settings.RECAPTCHA_PUBLIC_KEY }}", "recaptcha_ajax_field", {})
+      }
+  </script>{% endif %}
+  <script type="text/javascript" src="{% get_static_url "/js/extern/jquery.form.js" %}"></script>
+  <script type="text/javascript" src="{% get_static_url "/js/comment.js" %}"></script>
+  {% if playlists or playlistitem_sets or user_is_admin and sitelocation.playlists_enabled or request.user.is_authenticated and sitelocation.playlists_enabled == 1 %}<script type="text/javascript" src="{% get_static_url "/js/playlist.js" %}"></script>{% endif %}
+  {% include "localtv/view_video_meta.html" %}
+{% endblock %}
+
+{% block content %}
+  {% if edit_video_form %}
+    {% include "localtv/admin/edit_video_form.html" %}
+  {% endif %}
+
+  {% get_comment_count for current_video as comment_count %}
+
+    <div class="video_meta">
+      <div class="vid_title">
+        {% if user_is_admin %}
+        {% editable_widget current_video "name" %}
+        {% else %}
+        <h2>
+        {% if current_video.name %}
+        {{ current_video.name }}
+        {% else %}
+        {% trans "(no title)" %}
+        {% endif %}
+        </h2>
+        {% endif %}
+      </div>
+      <div class="vid_author">
+        <div class="posted_by">
+          {% if user_is_admin %}
+          {% editable_widget current_video "authors" %}
+          {% else %}
+          {% with current_video as instance %}
+          {% include "localtv/inline_edit/video_authors.html" %}
+          {% endwith %}
+          {% endif %}
+        </div>
+        <div class="posted_at">
+          {% if user_is_admin %}
+          {% editable_widget current_video "when_published" %}
+          {% else %}
+          {% with current_video as instance %}
+          {% filter lower %}
+          {% include "localtv/inline_edit/video_when_published.html" %}
+          {% endfilter %}
+          {% endwith %}
+          {% endif %}
+        </div>
+        <a href="#comments" class="comments_link">{{ comment_count }} Comment{{ comment_count|pluralize }}</a>
+      </div>
+      
+      
+
+
+      
+    </div>
+    <div id="video_wrapper">
+    	<div class="vid_inner">
+  
+    	 {% if current_video.embed_code %}
+        {{ current_video.embed_code|wmode_transparent }}
+        {% else %}
+        {% get_thumbnail_url current_video 534 430 as video_thumbnail %}
+        {% video current_video.file_url mime_type=current_video.file_url_mimetype width=534 height=430 autoplay=0 poster=video_thumbnail %}
+        {% if current_video.file_url_mimetype|is_ogg_media %}
+        <p class="help">
+          This video displays best with a browser that supports the HTML5 &lt;video&gt; tag &mdash; if you're having trouble viewing it, try the <a href="http://www.mozilla.com/firefox/">Firefox</a> browser.
+        </p>
+        {% endif %}
+        {% endif %}
+</div>
+    </div>
+
+
+<div class="content">
+	<div class="inner_content">
+
+	<div class="main">
+	<br/>
+        {% if current_video.website_url %}
+	 <a href="{{ current_video.website_url }}" id="seperate" class="med_button">
+        <span>See video on its original page</span>
+      </a>
+      {% endif %}
+      {% if user_is_admin %}
+      {% editable_widget current_video "editors_comment" %}
+      {% else %}
+      {% with current_video as instance %}
+      {% include "localtv/inline_edit/video_editors_comment.html" %}
+      {% endwith %}
+      {% endif %}
+
+      {% if user_is_admin %}
+      {% editable_widget current_video "description" %}
+      {% else %}
+      {% if current_video.description %}
+      <div class="heading">
+        <h2 id="comments">Description</h2>
+      </div>
+
+      <div class="description">
+        {{ current_video.description|sanitize }}
+      </div>
+      {% endif %}
+    {% endif %}
+    {% if comment_count %}<div class="heading"><h2 class="comments-title">{{ comment_count }} Comment{{ comment_count|pluralize }}</h2></div>{% endif %}
+    {% get_comment_list for current_video as comments %}
+    {% if comments %}
+    <ul class="comment_list" id="comments">
+      {% for comment in comments %}
+      
+      
+      
+      
+      <li>
+     <div class="item_details">
+
+          <h4>
+            {% if comment.user %}<a href="{% url localtv_author comment.user.pk %}">{{ comment.user_name }}</a>{% else %}{{ comment.user_name }}{% endif %}
+            <span>{{ comment.submit_date|date:"F j, Y, g:i a T" }}</span>
+          </h4>
+        
+        
+        <div class="comment">
+          {{ comment.comment|sanitize }}
+        </div>
+        
+						</div>
+          {% if user_is_admin %}
+          <div class="comment-moderation">
+            <form action="{% url comments-delete comment.id %}" method="post">
+              <input type="hidden" name="next" value="{{ request.META.PATH_INFO }}">
+              <button type="submit">delete</button>
+            </form>
+            <form action="{% url comments-spam comment.id %}" method="post">
+              <input type="hidden" name="next" value="{{ request.META.PATH_INFO }}">
+              <button type="submit">spam</button>
+            </form>
+          </div>
+          {% endif %}
+
+        
+        
+      </li>
+      
+      
+      
+            
+      
+      
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% if not sitelocation.comments_required_login or request.user.is_authenticated %}
+    <div class="heading">
+    <h2 class="clear post-comment-title">Post a Comment</h2>
+    </div>
+    {% get_comment_form for current_video as comment_form %}
+    <div class="comment_form">
+	    <form action="{% comment_form_target %}" method="post" id="comment_form">
+	      {% with comment_form as form %}
+	      {% include "comments/form_base.html" %}
+	      {% endwith %}
+	    </form>
+    </div>    
+    
+    {% endif %}
+  </div>
+
+  <div class="sidebar">
+  
+  <div class="share_box">
+  
+  	
+					<div class="share_links">
+                                          <a class="facebook" name="fb_share" type="icon_link" href="http://www.facebook.com/sharer.php">Post to Facebook</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+                                          <a href="http://twitter.com/?status={% filter urlencode %}I'm watching {{ current_video.name|slice:":47" }}{% ifnotequal current_video.name current_video.name|slice:":47" %}...{% endifnotequal %} on {{ sitelocation.site.name }}: http://{{sitelocation.site.domain }}{% url localtv_view_video video_id=current_video.pk slug="" %}{% endfilter %}" target="_blank" class="twitter">Tweet this Video</a>
+                                          <a href="{% get_email_share_url_for current_video %}" rel="#overlay" class="email">Email to Friends</a>
+                                          {% if current_video.file_url %}<a href="{{ current_video.file_url }}" class="download">Download Video File</a>{% endif %}
+					</div>
+					
+					
+					
+	
+   	<div class="meta">
+          {% if user_is_admin %}
+          {% editable_widget current_video "tags" %}
+          {% else %}
+          {% if current_video.tags.exists %}
+          {% with current_video as instance %}
+          {% include "localtv/inline_edit/video_tags.html" %}
+          {% endwith %}
+          {% endif %}
+          {% endif %}
+
+          {% if user_is_admin %}
+          {% editable_widget current_video "categories" %}
+          {% else %}
+          {% if current_video.categories.exists %}
+          {% with current_video as instance %}
+          {% include "localtv/inline_edit/video_categories.html" %}
+          {% endwith %}
+          {% endif %}
+          {% endif %}
+
+          {% if user_is_admin %}
+          {% if current_video.contact %}
+          <div class="floatleft">
+            <h4>Contact</h4>
+            <ul><li>{{ current_video.contact }}</li></ul>
+          </div>
+          {% endif %}
+          {% if current_video.notes %}
+          <div class="floatleft">
+            <h4>Notes</h4>
+            <ul><li>{{ current_video.notes }}</li></ul>
+          </div>
+          {% endif %}
+          {% endif %}
+        </div>
+<div class="clear">&nbsp;</div>
+
+</div>
+  
+  
+  
+    {% if sitelocation.sidebar_html %}
+    <div id="about" class="rounded">
+      {% autoescape off %}
+        {{ sitelocation.sidebar_html }}
+      {% endautoescape %}
+    </div>
+    {% endif %}
+    {% if sitelocation.playlists_enabled %}
+    <div id="sidebar_header">
+    {% if playlistitem %}
+    <div class="heading">
+      <h2>This video is number {{ playlistitem.index }} (of {{ playlistitem.playlist.items.count }}) in the playlist</h2>
+    </div>
+    <h3 class="playlist_title"><a href="{{ playlistitem.playlist.get_absolute_url }}">{{ playlistitem.playlist.name }}</a>{% if playlistitem.playlist.status != 2%} <span class="private">(<a href="{% url localtv_playlist_index %}">private</a>)</span>{% endif %}</h3>
+    <div class="playlist_thumbs">
+      {% for sibling in playlistitem.get_two_from_order %}
+      <a href="{{ sibling.video.get_absolute_url }}?playlist={{ playlistitem.playlist.pk }}" style="float: {% if forloop.first %}left{% else %}right"{% endif %};">
+        <span class="thumb_number">{{ sibling.index }}</span>
+        <img src="{% get_thumbnail_url sibling.video 140 110 %}"/>
+        <div class="thumb_title">{{ sibling.video.name }}</div>
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {# The logic I want is 'if can make playlists or (items and (not playlist or more than 1 item))' #}
+    {% if user_is_admin and sitelocation.playlists_enabled or request.user.is_authenticated and sitelocation.playlists_enabled == 1 or playlistitem_set %}
+    {% if user_is_admin and sitelocation.playlists_enabled or request.user.is_authenticated and sitelocation.playlists_enabled == 1 or not playlistitem or playlistitem_set|length != 1 %}
+    {% if not playlistitem or playlistitem_set|length > 1 %}
+    <div class="heading">
+      <h2>{% if playlistitem %}Other playlists that include this video{% else %}Playlists{% endif %}</h2>
+    </div>
+    {% endif %}
+    <div id="playlists">
+      <div>
+        <ul>
+          {% for item in playlistitem_set %}
+          {% if item != playlistitem %}
+          <li>
+            <div class="playlist_title">
+              <a href="{{ item.playlist.get_absolute_url }}">{{ item.playlist.name }}</a>{% if item.playlist.status != 2 %} <span class="private">(<a href="{% url localtv_playlist_index %}">private</a>)</span>{% endif %}
+              {% with item.playlist.video_set.count as count %}<span class="playlist_count"><a href="{{ item.playlist.get_absolute_url }}">({{ count }} video{{ count|pluralize }})</a></span>{% endwith %}
+            </div>
+            <div class="playlist_thumbs">
+              {% for sibling in item.get_two_from_order %}
+              <a href="{{ sibling.video.get_absolute_url }}?playlist={{ item.playlist.pk }}" style="float: {% if forloop.first %}left{% else %}right"{% endif %};">
+                <span class="thumb_number">{{ sibling.index }}</span>
+                <img src="{% get_thumbnail_url sibling.video 140 110 %}"/>
+                <div class="thumb_title">{{ sibling.video.name }}</div>
+              </a>
+              {% endfor %}
+            </div>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+    {% if user_is_admin and sitelocation.playlists_enabled or request.user.is_authenticated and sitelocation.playlists_enabled == 1 %}
+    <form method="POST" action="{% url localtv_playlist_add_video current_video.pk%}">
+      <select name="playlist" id="id_playlist">
+        <option value="">Add video to your playlist</option>
+        {% for playlist in playlists %}
+        {% if playlist not in current_video.playlists.all %}<option value="{{ playlist.pk }}">{{ playlist.name }}</option>{% endif %}
+        {% endfor %}
+        {# <option value="new">New playlist...</option> #}
+      </select>
+      <input type="submit" value="Add"/>
+    </form>
+    <form method="POST" action="{% url localtv_playlist_index %}">
+      <input type="text" name="name" />
+      <input type="hidden" name="video" value="{{ current_video.pk }}">
+      <input type="submit" value="Add New Playlist">
+    </form>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    
+    {% if category %}
+    {% cache 3600 view_video_blue_category_new sitelocation category cache_invalidator %}
+    <div class="heading">
+      <h2>{{ category.name }}</h2>
+      {% url localtv_feeds_category category.slug as category_rss %}
+      <a href="{{ category_rss }}" class="rss">RSS</a>
+      <a href="http://subscribe.getmiro.com/?url1=http%3A//{{ sitelocation.site.domain|urlencode }}{{ category_rss|urlencode }}" class="subscribe">Subscribe</a>
+    </div>
+    {% get_video_list_for_category category as new_videos %}
+    {% for video in new_videos|slice:":9" %}
+    <ul class="small_vid_list">
+    {% include "localtv/sidebar_video.html" %}
+    </ul>
+    {% endfor %}
+    {% endcache %}
+    {% else %}
+    {% cache 3600 view_video_blue_new sitelocation cache_invalidator %}
+    <div class="heading">
+      <h2>New Videos</h2>
+      {% url localtv_feeds_new as new_rss %}
+      <a href="{{ new_rss }}" class="rss">RSS</a>
+      <a href="http://subscribe.getmiro.com/?url1=http%3A//{{ sitelocation.site.domain|urlencode }}{{ new_rss|urlencode }}" class="subscribe">Subscribe</a>
+    </div>
+    {% get_video_list_new as new_videos %}
+    {% for video in new_videos|slice:":9" %}
+    <ul class="small_vid_list">
+      {% include "localtv/sidebar_video.html" %}
+    </ul>
+    {% endfor %}
+    {% endcache %}
+    {% endif %}
+  </div>
+  
+</div>
+</div>  
+</div>
+{% endblock content %}
