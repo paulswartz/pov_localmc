@@ -59,7 +59,7 @@ button {
   background: #00273f;
   background: -webkit-gradient(linear, left top, left bottom, from(#004772), to(#00273f)) no-repeat;
   background: -moz-linear-gradient(top,                            #004772,     #00273f) no-repeat;
-  background: #00273f url(/images/header_bg.jpg) top center no-repeat !important;
+  background: #00273f url(../images/header_bg.jpg) top center no-repeat !important;
   height: 200px;
 }
 
@@ -139,7 +139,7 @@ Social Connect
 #header #social_connect li#twitter a {
   width: 205px;
   height: 53px;
-  background: transparent url(/images/social_nav_bg.png) 0 0 no-repeat;
+  background: transparent url(../images/social_nav_bg.png) 0 0 no-repeat;
   display: block;
 }
 
@@ -154,7 +154,7 @@ Social Connect
 #header #social_connect li#facebook a {
   width: 204px;
   height: 53px;
-  background: transparent url(/images/social_nav_bg.png) -205px 0 no-repeat;
+  background: transparent url(../images/social_nav_bg.png) -205px 0 no-repeat;
   display: block;
 }
 
@@ -169,7 +169,7 @@ Social Connect
 #header #social_connect li#submit a {
   width: 154px;
   height: 53px;
-  background: transparent url(/images/social_nav_bg.png) -409px 0 no-repeat;
+  background: transparent url(../images/social_nav_bg.png) -409px 0 no-repeat;
   display: block;
 }
 
@@ -395,7 +395,7 @@ body#series #content #subscribe a:hover#rss, body#series #content #subscribe a:h
 }
 
 #footer #logo .site_logo a {
-  background: transparent url(/images/pov_logo.png) 0 0 no-repeat !important;
+  background: transparent url(../images/pov_logo.png) 0 0 no-repeat !important;
 }
 
 /* Index Colors */

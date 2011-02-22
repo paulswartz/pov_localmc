@@ -18,15 +18,13 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
 
-
 {% load comments i18n localtv_thumbnail filters uploadtemplate_tags editors_comment %}
-
 
 	<li id="video-{{ video.pk }}">
           {% if video.has_thumbnail or video.feed.has_thumbnail or video.search.has_thumbnail %}
-		<a href="{{ video.get_absolute_url }}{{ video_url_extra }}" class="image med_thumb" style="background: url({% get_thumbnail_url video 222 169 %}) 5px 5px no-repeat;">
+		  <div class="video_item_img"><a href="{{ video.get_absolute_url }}{{ video_url_extra }}"><em class="icon">9</em><img src="{% get_thumbnail_url video 270 148 %}" /></a></div>
           {% else %}
-		<a href="{{ video.get_absolute_url }}{{ video_url_extra }}" class="image med_thumb" style="background: url({% get_static_url "/images/default_big.jpg" %}) center center no-repeat;">
+		  <div class="video_item_img"><a href="{{ video.get_absolute_url }}{{ video_url_extra }}"><em class="icon">9</em><img src="{% get_static_url "/images/default_big.jpg" %}" /></a></div>
           {% endif %}
                   {% get_comment_count for video as comment_count %}
                   {% if comment_count %}<span class="comments_overlay"><span>{{ comment_count }} Comment{{ comment_count|pluralize }}</span></span>{% endif %}
