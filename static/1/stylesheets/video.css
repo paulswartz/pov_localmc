@@ -50,8 +50,8 @@ body.video #content #subscribe a:hover#miro, body.video #content #subscribe a:ho
   color: #a85a62;
 }
 
-body.video #content h1 {
-  font-size: 25px;
+h1#title_video {
+  font-size: 25px !important;
   letter-spacing: -1px;
   margin: 0 0 10px 0;
 }
@@ -75,6 +75,11 @@ body.video #content #video_container #video_port {
   margin: 0 auto;
 }
 
+body.video #content #video_container #video_port #video_embed {
+	width: 534px;
+	margin: 0 auto;
+}
+
 body.video #content #video_container #video_port .icon {
   font-size: 150px;
   line-height: 0;
@@ -90,7 +95,7 @@ body.video #content #video_meta {
   -webkit-border-bottom-right-radius: 5px;
   padding: 10px;
   font-size: 13px;
-  margin: -10px 0 20px 0;
+  margin: 0 0 20px 0;
 }
 
 body.video #content #video_meta #category {
@@ -133,6 +138,41 @@ body.video #content #video_description a#original_video {
 
 body.video #content #video_description a#original_video, body.video #content #video_description a#original_video em.icon {
   font-size: 14px;
+}
+
+body.video #content #video_comments #video_comment_form h2 {
+	margin: 10px 0 5px 0;
+}
+
+body.video #content #video_comments #video_comment_form textarea {
+	width: 500px;
+	padding: 10px;
+	border: 1px #BBB solid;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	font-size: 14px;
+	line-height: 18px;
+	color: #656565;
+}
+
+body.video #content #video_comments #video_comment_form textarea:focus {
+	border: 1px #000 solid;
+}
+
+body.video #content #video_comments #video_comment_form span#posting_as {
+	font-weight: bold;
+	font-size: 11px;
+	color: #777;
+	margin: 0 0 0 10px;
+}
+
+body.video #content #video_comments #video_comment_form span#posting_as strong {
+	color: #333;
+}
+
+body.video #content #video_comments #video_comment_form button:hover {
+	opacity: 0.7;
+	cursor: pointer;
 }
 
 body.video #content .sidebar {
@@ -181,14 +221,19 @@ body.video #content #share_video ul li a {
 
 body.video #content #related_videos {
   margin: 20px 0 0 0;
+	width: 650px;
+}
+
+body.video #content #related_videos ul.video_list {
+	margin: 0 0 0 -10px;
 }
 
 body.video #content #related_videos ul.video_list li.video_item {
-  width: 201px;
+  width: 175px;
 }
 
 body.video #content #related_videos ul.video_list li.video_item .video_item_img a {
-  width: 201px;
+  width: 175px;
 }
 
 body.video #content #related_videos ul.video_list li.video_item h2 {
@@ -196,7 +241,7 @@ body.video #content #related_videos ul.video_list li.video_item h2 {
 }
 
 body.video #content #related_videos ul.video_list li.video_item .video_item_img a img {
-  width: 201px;
+  width: 175px;
   -webkit-border-radius: 5px;
   -moz-border-radius:    5px;
 }
@@ -205,7 +250,7 @@ body.video #content #related_videos ul.video_list li.video_item .video_item_img 
   text-align: center;
   display: block;
   position: relative;
-  top: 60px;
+  top: 75px;
   left: 10px;
   color: rgba(255,255,255, 0.4);
   line-height: 0;

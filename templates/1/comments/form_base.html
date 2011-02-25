@@ -18,9 +18,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
 {% load i18n uploadtemplate_tags %}
-{% if request.user.is_authenticated %}
-      <p class="posting-as">Posting as {{ request.user.username }}</p>
-{% endif %}
+
   {% for field in form %}
     {% if field.is_hidden %}
       {{ field }}
@@ -35,12 +33,10 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
     {% endif %}
     {% else %}
     {% ifnotequal field.name "name" %}{% ifnotequal field.name "email" %}{% ifnotequal field.name "url" %}
-      <p
-        {% if field.errors %} class="error"{% endif %}
-        {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+      <div {% if field.errors %} class="error"{% endif %} {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
         {% if field.errors %}{{ field.errors }}{% endif %}
         {% ifnotequal field.name "comment" %}{{ field.label_tag }} {% endifnotequal %}{{ field }}
-      </p>
+      </div>
     {% endifnotequal %}{% endifnotequal %}{% endifnotequal %}
     {% endifequal %}
     {% endif %}
@@ -50,18 +46,16 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
   <input type="hidden" name="email" value="{{ request.user.email }}" />
   <input type="hidden" name="url" value="{{ request.user.get_profile.website }}" />
   {% else %}
-  <p{% if form.name.errors %} class="error"{% endif %}>
+  <span {% if form.name.errors %} class="error"{% endif %}>
     {{ form.name.errors }}
     {{ form.name.label_tag }} {{ form.name }}
-  </p>
-  <p{% if form.email.errors %} class="error"{% endif %}>
+  </span>
+  <span {% if form.email.errors %} class="error"{% endif %}>
     {{ form.email.errors }}
     {{ form.email.label_tag }} {{ form.email }}
-  </p>
+  </span>
   {% endif %}
   {% if not sitelocation.screen_all_comments or user_is_admin %}
   <input type="hidden" name="next" value="{{ form.target_object.get_absolute_url }}" />
   {% endif %}
- <p class="submit"> 
-   <button type="submit" class="more_large post_comment"><span>Post Comment</span></button> 
- </p>
+  <div><button type="submit"><span>Post Comment</span></button> {% if request.user.is_authenticated %} <span id="posting_as">Posting as <strong>{{ request.user.username }}</strong></span>{% endif %}</div>

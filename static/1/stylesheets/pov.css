@@ -220,6 +220,10 @@ Social Connect
   -moz-box-shadow:    0 1px 0 #FFF, inset 0 1px 1px rgba(0,0,0, 0.5);
 }
 
+.pagination ul.pagination_slides li.current a {
+	background: #000 !important;
+}
+
 .pagination ul.pagination_slides li a:hover {
   background: #999;
 }

@@ -24,7 +24,7 @@
   margin: -35px 0 0 0;
 }
 
-#video_module {
+.video_module {
   width: 600px;
   float: left;
 }
