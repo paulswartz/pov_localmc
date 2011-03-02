@@ -117,7 +117,7 @@ body.video #content #video_interact {
   float: left;
 }
 
-body.video #content #video_description h2 {
+body.video #content #video_description h4 {
   font-size: 20px;
   font-weight: bold;
   letter-spacing: -1px;
@@ -126,9 +126,18 @@ body.video #content #video_description h2 {
   border-bottom: 1px #CCC solid;
 }
 
-body.video #content #video_description p {
+body.video #content #video_description div.description {
   font-size: 16px;
   line-height: 32px;
+}
+
+body.video #content #video_tags h4 {
+	font-size: 20px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  margin: 0 0 10px 0;
+  padding: 0 0 10px 0;
+  border-bottom: 1px #CCC solid;
 }
 
 body.video #content #video_description a#original_video {

@@ -20,67 +20,50 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 
 {% load pagetabs %}
 {% block body_id %}category_page{% endblock %}
-
+{% block body_class %}secondary{% endblock %}
 
 {% block content %}
 
-<div class="content">
-<div class="inner_content">
-<div id="category_sidebar">
-  {% if category.name %}
-  <div id="category_info">
-    {% if category.logo %}<img src="{{ category.logo.url }}">{% endif %}
-
-	    <a class="rss floatright" href="{% url localtv_feeds_category category.slug %}">RSS</a>
 
 
-    <h1>{{ category.name }}</h1>
-
-    <div>{{ category.description|safe }}</div>
-
-  </div>
-  {% endif %}
-  {% if category.child_set.count %}
-  <div id="subcategory_sidebar">
-    <div id="main_header" class="small">
-      <h2>Subcategories</h2>
-    </div>
-    <ul class="cat_list">
-      {% for subcat in category.child_set.all %}
-      <li>
-        <a class="top_cat_button" title="{{ subcat.name }}" href="{{ subcat.get_absolute_url }}"><span>{{ subcat.name }}</span></a>
-        {% if subcat.child_set.count %}
-        <ul>
-        {% for subsubcat in subcat.child_set.all %}
-        <li><a href="{{ subsubcat.get_absolute_url }}">{{ subsubcat.name }}</a></li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-  {% endif %}
-</div>
-<div id="category">
-{% if page_obj.has_other_pages %}
-<div class="pag">
-  <b>Pages</b>
-  {% pagetabs page_obj %}
-</div>
+{% if category.child_set.count %}
+<h2>Subcategories</h2>
+{% for subcat in category.child_set.all %}
+<a class="top_cat_button" title="{{ subcat.name }}" href="{{ subcat.get_absolute_url }}"><span>{{ subcat.name }}</span></a>
+{% if subcat.child_set.count %}
+{% for subsubcat in subcat.child_set.all %}
+<a href="{{ subsubcat.get_absolute_url }}">{{ subsubcat.name }}</a>
+{% endfor %}
 {% endif %}
-  <ul class="vid_list">
-    {% for video in video_list %}
-    <li>
-      {% include "localtv/video_listing_individual.html" %}
-    </li>
-    {% endfor %}
-  </ul>
-</div>
-<div class="clear">&nbsp;</div>
+{% endfor %}
+{% endif %}
 
+
+<div id="rss">
+  <a class="rss" href="{% url localtv_feeds_category category.slug %}"><em class="icon">f</em> RSS</a>
 </div>
-</div>
+{% if category.name %}
+  <h1 class="page_title">{{ category.name }}</h1>
+{% endif %}
+<div class="pod">
+    <div class="bd">
+      {% if category.description %}
+        <p class="category_description"><strong>Category Description:</strong> {{ category.description|safe }}</p>
+      {% endif %}
+      <ul class="video_list clear">
+        {% for video in video_list %}
+          <li class="video_item alt_item" class="clear">
+            {% include "localtv/video_listing_individual.html" %}
+          </li><!-- // video_item -->
+        {% endfor %}
+      </ul>
+    </div><!-- // bd -->
+</div><!-- // pod -->
+
+{% if page_obj.has_other_pages %}
+{% pagetabs page_obj %}
+{% endif %}
+<div class="clear"></div>
 {% endblock %}
 
 

@@ -3,6 +3,7 @@
 @import url(index.css);
 @import url(video.css);
 @import url(series.css);
+@import url(secondary.css);
 
 @font-face {
     font-family: Pictos;

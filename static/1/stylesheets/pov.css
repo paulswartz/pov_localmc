@@ -254,13 +254,11 @@ Social Connect
   -webkit-border-top-left-radius:  4px;
   -moz-border-radius-topright:     4px;
   -moz-border-radius-topleft:      4px;
-  opacity: 0.7;
 }
 
 .tabbed_mod li#active a {
   border-bottom: 0;
   background: #FFF;
-  opacity: 1.0;
 }
 
 .tabbed_mod li a:hover {
@@ -285,7 +283,7 @@ Social Connect
   color: #656565;
 }
 
-.text_tabs li#active a {
+.text_tabs li#active a, .text_tabs li.ui-state-active a {
   color: #000;
   border-bottom: 2px #000 solid;
 }
@@ -299,12 +297,13 @@ Social Connect
   border-bottom: 2px #000 solid;
 }
 
-.text_tabs li#active a:hover {
+.text_tabs li.ui-state-active a:hover {
   color: #555;
   border-bottom: 2px #555 solid;
 }
 
-.text_tabs li#active a:hover em.icon, .text_tabs li a:hover em.icon {
+.text_tabs li#active a:hover em.icon, .text_tabs li a:hover em.icon,
+.text_tabs li.ui-state-active a:hover em.icon {
   color: #555;
 }
 

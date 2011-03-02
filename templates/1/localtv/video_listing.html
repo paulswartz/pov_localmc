@@ -18,46 +18,36 @@ You should have received a copy of the GNU Affero General Public License
 along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
-
 {% load pagetabs %}
-
+{% block body_class %}secondary{% endblock %}
 {% block content %}
-  
-  <div class="content">
-  <div class="inner_content">
-  
-  <div class="heading">
-	  <h2 class="page_title">
-              {% block page_title %}Page Title{% endblock %}
-          </h2>
-          <a class="rss" href="{% block rss_url %}{% endblock %}">RSS</a>
-	  
-	  {% block pagination %}
-	    <div class="pag">
-	      {% if page_obj.has_other_pages %}
-	        <b>Pages</b> {% pagetabs page_obj %}
-	      {% endif %}
-	    </div>
-	  {% endblock pagination %}
 
-	</div>
+<div style="margin: -10px 0 10px 0;" class="clear">
+{% block pagination %}
+{% pagetabs page_obj %}
+{% endblock pagination %}
+</div><!-- // clear -->
 
+<div class="pod">
+  <div class="hd">
+    <div id="rss">
+      <a class="rss" href="{% block rss_url %}{% endblock %}"><em class="icon">f</em> RSS</a>
+    </div>
+    <h2>{% block page_title %}Page Title{% endblock %}</h2>
+  </div><!-- // hd -->
+    <div class="bd">
+      <ul class="video_list clear">
+        {% for video in video_list %}
+          <li class="video_item alt_item" class="clear">
+            {% include "localtv/video_listing_individual.html" %}
+          </li><!-- // -->
+        {% endfor %}
+      </ul>
+  </div><!-- // bd -->
+</div><!-- // pod -->
 
-  <ul class="vid_list">
-
-  {% for video in video_list %}
-    {% include "localtv/video_listing_individual.html" %}
-  {% endfor %}
-  </ul>
-
-  {% block pagination2 %}
-  <div class="pag bottom">
-    {% pagetabs page_obj %}
-  </div>
-  {% endblock %}
-
-</div>
-<div class="clear">&nbsp;</div>
-</div>
-
+{% block pagination2 %}
+{% pagetabs page_obj %}
+{% endblock %}
+<div class="clearfix"></div>
 {% endblock content %}

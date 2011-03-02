@@ -45,6 +45,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 {% endblock %}
 
 {% block content %}
+
   <div id="admin_single_video" class="admin_panel">
     <h2>Admin Controls</h2>
   {% if edit_video_form %}
@@ -118,13 +119,15 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
         <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fexample.com%2Fpage%2Fto%2Flike&amp;layout=standard&amp;show_faces=false&amp;width=400&amp;action=like&amp;font=lucida+grande&amp;colorscheme=light&amp;height=25" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:400px; height:25px;" allowTransparency="true"></iframe>
         </div><!-- // facebook_container -->
 
-        <span id="category"><strong><em class="icon">l</em>Category:</strong>
+        <span id="category"><strong><em class="icon">l</em></strong>
           {% if user_is_admin %}
             {% editable_widget current_video "categories" %}
           {% else %}
             {% if current_video.categories.exists %}
               {% with current_video as instance %}
+                <div class="clear">
                 {% include "localtv/inline_edit/video_categories.html" %}
+                </div><!-- // clear -->
               {% endwith %}
             {% endif %}
           {% endif %}
@@ -136,34 +139,42 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
       <div id="video_interact" class="clear">
         <div id="tabs_module">
         <ul class="tabbed_mod text_tabs clear">
-          <li><a href="#video_description"><em class="icon">p</em> Description</a></li>
-          <li><a href="#tags"><em class="icon">z</em> Tags</a></li>
-          <li><a href="#video_comments"><em class="icon">q</em> {% if comment_count %}({ comment_count }) Comment{{ comment_count|pluralize }} {% else %} No Comments {% endif %}</a></li>
+          <li class="ui-state-default"><a href="#video_description"><em class="icon">p</em> Description</a></li>
+          <li><a href="#video_tags"><em class="icon">z</em> Tags</a></li>
+          <li><a href="#video_comments"><em class="icon">q</em> {% if comment_count %}({ comment_count }) Comment{{ comment_count|pluralize }} {% else %} Add a Comment {% endif %}</a></li>
         </ul>
         <div class="tabbed_pod">
-          <div id="video_description" style="display: none;">
+          <div id="video_description">
             {% if user_is_admin %}
             {% editable_widget current_video "description" %}
             {% else %}
             {% if current_video.description %}
               {{ current_video.description|sanitize }}
-            {% endif %}<!-- // current_video.description -->
-            {% endif %}
-                
-            {% if user_is_admin %}
-              {% editable_widget current_video "editors_comment" %}
             {% else %}
-              {% with current_video as instance %}
-                {% include "localtv/inline_edit/video_editors_comment.html" %}
-              {% endwith %}
-            {% endif %}<!-- // user_is_admin -->
+              <p>No Description</p>
+            {% endif %}<!-- // current_video.description -->
+            {% endif %}<!-- // if user_is_admin.description -->
             
             {% if current_video.website_url %}
-              <a href="{{ current_video.website_url }}" id="seperate" class="med_button">
-                <span>See video on its original page</span>
-              </a>
+              <a id="original_video" href="{{ current_video.website_url }}"><em class="icon">A</em> See video on its original page</a>
             {% endif %}<!-- // current_video.website_url -->
           </div><!-- // video_description -->
+          
+          <div id="video_tags">
+            {% if user_is_admin %}
+              {% editable_widget current_video "tags" %}
+            {% else %}
+              {% if current_video.tags.exists %}
+              {% with current_video as instance %}
+              <div class="clear">
+                {% include "localtv/inline_edit/video_tags.html" %}
+              </div><!-- // clear -->
+              {% endwith %}
+              {% else %}
+                <p>No Tags</p>
+              {% endif %}<!-- // if current_video.tags.exists -->
+            {% endif %}<!-- // if user_is_admin -->
+          </div><!-- // tags -->
           
           <div id="video_comments" class="comment_mod">
               {% get_comment_list for current_video as comments %}
