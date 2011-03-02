@@ -320,11 +320,14 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
       </div><!-- // video_interact -->
       
       <div class="sidebar">
+        {% if current_video.authors.count %}
+        {% with current_video.authors.all.0 as author %}
         <div id="about_author" class="video_side">
-          <h2>About Film Factory</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod.</p>
+          <h2>About {{ author.first_name }} {{ author.last_name }} </h2>
+          <p>{{ author.get_profile.description }}</p>
         </div><!-- // about_author -->
-        
+        {% endwith %}
+	{% endif %}
         <div id="share_video" class="video_side">
           <h2>Share Video</h2>
             <ul>
