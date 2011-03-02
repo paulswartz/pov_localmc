@@ -1,0 +1,78 @@
+/*
+Secondary Page Styles
+*/
+
+body.secondary {
+	
+}
+
+body.secondary h1.page_title {
+	font-weight: bold;
+	font-size: 20px;
+	margin: 0 0 10px 0;
+}
+
+body.secondary div#rss {
+	float: right;
+}
+
+body.secondary div#rss a {
+	font-size: 14px;
+}
+
+body.secondary div#rss a em.icon {
+	font-size: 16px;
+}
+
+body.secondary ul.pagetabs li {
+	float: left;
+	margin: 0 3px 0 0
+}
+
+body.secondary ul.pagetabs li a span {
+	display: block;
+	padding: 5px 7px 4px 7px;
+	font-size: 12px;
+	font-weight: bold;
+	border: 1px #BBB solid;
+	border-radius: 5px;
+}
+
+body.secondary ul.pagetabs li a:hover span {
+	background: #BBB;
+	color: #FFF;
+	border-color: #B1B1B1;
+}
+
+body.secondary ul.pagetabs li.selected a span {
+	background: #BBB;
+	color: #FFF;
+	border-color: #B1B1B1;
+}
+
+body.secondary ul.pagetabs li.selected a:hover span {
+	background: #d1d1d1;
+	border-color: #d1d1d1;
+	color: #999;
+}
+
+body#about_page #about_site img {
+	float: left;
+	margin: 0 10px 0 0;
+	border: 1px #CCC solid;
+}
+
+body#about_page #about_miro {
+	margin: 60px 0 0 0;
+}
+
+body#category_page .pod .bd p.category_description {
+	padding: 5px 10px 10px 10px;
+	font-size: 14px;
+	color: #888;
+}
+
+body#category_page .pod .bd p.category_description strong {
+	color: #444;
+	font-weight: bold;
+}
