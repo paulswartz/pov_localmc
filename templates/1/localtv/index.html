@@ -57,7 +57,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
   </ul>
     <div id="new_mod" class="video_module tabbed_pod pod">
       <ul class="video_list clear">
-          {% for video in new_videos|slice:":8" %}
+          {% for video in new_videos|slice:":10" %}
           <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
             {% include "localtv/video_listing_individual.html" %}
           </li>
@@ -185,31 +185,21 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
         <h2>Facebook Stream</h2>
       </div><!-- // hd -->
       <div class="bd">
-        <iframe src="http://www.facebook.com/plugins/activity.php?site=http://www.pittsburghfoundation.org/&amp;width=300&amp;height=300&amp;header=false&amp;colorscheme=light&amp;border_color=FFFFFF&amp;recommendations=false" scrolling="no" frameborder="0" style="border: none !important; overflow:hidden; width:300px; height:300px;" allowTransparency="true"></iframe>
+        <iframe src="http://www.facebook.com/plugins/activity.php?site=http://www.pittsburghonvideo.org&amp;width=300&amp;height=300&amp;header=false&amp;colorscheme=light&amp;border_color=FFFFFF&amp;recommendations=false" scrolling="no" frameborder="0" style="border: none !important; overflow:hidden; width:300px; height:300px;" allowTransparency="true"></iframe>
       </div><!-- // bd -->
     </div><!-- // pod -->
     
-    <div class="pod featured_wthumb">
+    <div id="most_popular" class="pod featured_wthumb">
       <div class="hd">
         <h2>Most Popular</h2>
       </div><!-- // hd -->
       <div class="bd">
         <ul>
-          <li><a class="clear" href="">
-            <img src="http://s3.mirocommunity.org.s3.amazonaws.com/pittsburgh/localtv/video_thumbs/1436/140x110.png?e92deacf" />
-            <h4>Name of Video</h4>
-            <p>Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere.</p>
-          </a></li>
-          <li><a class="clear" href="">
-            <img src="http://s3.mirocommunity.org.s3.amazonaws.com/pittsburgh/localtv/video_thumbs/1436/140x110.png?e92deacf" />
-            <h4>Name of Video</h4>
-            <p>Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere.</p>
-          </a></li>
-          <li class="last"><a class="clear" href="">
-            <img src="http://s3.mirocommunity.org.s3.amazonaws.com/pittsburgh/localtv/video_thumbs/1436/140x110.png?e92deacf" />
-            <h4>Name of Video</h4>
-            <p>Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere.</p>
-          </a></li>
+          {% for video in popular_videos|slice:":3" %}
+          <li>
+            {% include "localtv/sidebar_video.html" %}
+          </li><!-- // video_item -->
+          {% endfor %}
         </ul>
       </div><!-- // bd -->
     </div><!-- // pod -->

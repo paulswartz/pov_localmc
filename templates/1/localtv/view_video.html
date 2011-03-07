@@ -117,10 +117,10 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
       <div id="video_meta">
         <div class="clear">
         <div class="facebook_container">
-        <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fexample.com%2Fpage%2Fto%2Flike&amp;layout=standard&amp;show_faces=false&amp;width=400&amp;action=like&amp;font=lucida+grande&amp;colorscheme=light&amp;height=25" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:400px; height:25px;" allowTransparency="true"></iframe>
+        <iframe src="http://www.facebook.com/plugins/like.php?href=&amp;layout=standard&amp;show_faces=false&amp;width=400&amp;action=like&amp;font=lucida+grande&amp;colorscheme=light&amp;height=25" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:400px; height:25px;" allowTransparency="true"></iframe>
         </div><!-- // facebook_container -->
 
-        <span id="category"><strong><em class="icon">l</em></strong>
+        <div id="category">
           {% if user_is_admin %}
             {% editable_widget current_video "categories" %}
           {% else %}
@@ -132,7 +132,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
               {% endwith %}
             {% endif %}
           {% endif %}
-          </span><!-- // category -->
+          </div><!-- // category -->
         </div><!-- // clear -->
       </div><!-- // video_meta -->
       
@@ -142,7 +142,8 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
         <ul class="tabbed_mod text_tabs clear">
           <li class="ui-state-default"><a href="#video_description"><em class="icon">p</em> Description</a></li>
           <li><a href="#video_tags"><em class="icon">z</em> Tags</a></li>
-          <li><a href="#video_comments"><em class="icon">q</em> {% if comment_count %}({ comment_count }) Comment{{ comment_count|pluralize }} {% else %} Add a Comment {% endif %}</a></li>
+          {% get_comment_count for current_video as comment_count %}
+          <li><a href="#video_comments"><em class="icon">q</em> {% if comment_count %}{{ comment_count }} Comment{{ comment_count|pluralize }}{% else %} Add a Comment {% endif %}</a></li>
         </ul>
         <div class="tabbed_pod">
           <div id="video_description">
@@ -222,101 +223,102 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
         <div id="related_tabs_module">
          <div id="related_videos">
           <ul class="tabbed_mod clear">
-            <li><a href="#cat1">Related Videos</a></li>
-            <li><a href="#cat2">Most Popular</a></li>
-            <li><a href="#cat3">More from NAME</a></li>
-            <li><a href="#cat4">More in CATEGORY</a></li>
+            <li><a href="#new_mod">New Videos</a></li>
+            <li><a href="#mostpopular_mod">Most Popular</a></li>
+            <li><a href="#morebyauthor_mod">More videos by this author</a></li>
+            <li><a href="#moreincategory_mod">More videos in this category</a></li>
           </ul>
-          <div class="tabbed_pod pod">
-            <div id="cat1">
-              {% get_video_list_new as new_videos %}
-              <ul class="video_list clear">
-              {% for video in new_videos|slice:":3" %}
-              <li class="video_item alt_item" class="clear">
-                {% include "localtv/sidebar_video.html" %}
+          <div id="new_mod" class="tabbed_pod pod clear">
+            {% get_video_list_new as new_videos %}
+            <ul class="video_list clear">
+              {% for video in new_videos|slice:":6" %}
+              <li class="video_item alt_item %}" class="clear">
+                {% include "localtv/related_video.html" %}
               </li><!-- // video_item -->
               {% endfor %}
+            </ul>
+            <div class="pagination" style="display: none;">
+              <a id="left_arrow" href="">[</a>
+              <a id="right_arrow" href="">]</a>
+              <ul class="pagination_slides clear">
+                <li><a href="">Page 1</a></li>
+                <li><a href="">Page 2</a></li>
+                <li><a href="">Page 3</a></li>
+                <li><a href="">Page 4</a></li>
+                <li><a href="">Page 5</a></li>
               </ul>
-              <div class="pagination">
-                <a id="left_arrow" href="">[</a>
-                <a id="right_arrow" href="">]</a>
-                <ul class="pagination_slides clear">
-                  <li><a href="">Page 1</a></li>
-                  <li><a href="">Page 2</a></li>
-                  <li><a href="">Page 3</a></li>
-                  <li><a href="">Page 4</a></li>
-                  <li><a href="">Page 5</a></li>
-                </ul>
-              </div><!-- // pagination -->
-            </div><!-- // cat1 -->
-            
-            <div id="cat2">
-              {% get_video_list_new as new_videos %}
-              <ul class="video_list clear">
-              {% for video in new_videos|slice:":3" %}
-              <li class="video_item alt_item" class="clear">
-                {% include "localtv/sidebar_video.html" %}
-              </li><!-- // video_item -->
-              {% endfor %}
-              </ul>
-              <div class="pagination">
-                <a id="left_arrow" href="">[</a>
-                <a id="right_arrow" href="">]</a>
-                <ul class="pagination_slides clear">
-                  <li><a href="">Page 1</a></li>
-                  <li><a href="">Page 2</a></li>
-                  <li><a href="">Page 3</a></li>
-                  <li><a href="">Page 4</a></li>
-                  <li><a href="">Page 5</a></li>
-                </ul>
-              </div><!-- // pagination -->
-            </div><!-- // cat2 -->
-            
-            <div id="cat3">
-              {% get_video_list_new as new_videos %}
-              <ul class="video_list clear">
-              {% for video in new_videos|slice:":3" %}
-              <li class="video_item alt_item" class="clear">
-                {% include "localtv/sidebar_video.html" %}
-              </li><!-- // video_item -->
-              {% endfor %}
-              </ul>
-              <div class="pagination">
-                <a id="left_arrow" href="">[</a>
-                <a id="right_arrow" href="">]</a>
-                <ul class="pagination_slides clear">
-                  <li><a href="">Page 1</a></li>
-                  <li><a href="">Page 2</a></li>
-                  <li><a href="">Page 3</a></li>
-                  <li><a href="">Page 4</a></li>
-                  <li><a href="">Page 5</a></li>
-                </ul>
-              </div><!-- // pagination -->
-            </div><!-- // cat3 -->
-            
-            <div id="cat4">
-              {% get_video_list_new as new_videos %}
-              <ul class="video_list clear">
-              {% for video in new_videos|slice:":3" %}
-              <li class="video_item alt_item" class="clear">
-                {% include "localtv/sidebar_video.html" %}
-              </li><!-- // video_item -->
-              {% endfor %}
-              </ul>
-              <div class="pagination">
-                <a id="left_arrow" href="">[</a>
-                <a id="right_arrow" href="">]</a>
-                <ul class="pagination_slides clear">
-                  <li><a href="">Page 1</a></li>
-                  <li><a href="">Page 2</a></li>
-                  <li><a href="">Page 3</a></li>
-                  <li><a href="">Page 4</a></li>
-                  <li><a href="">Page 5</a></li>
-                </ul>
-              </div><!-- // pagination -->
-            </div><!-- // cat4 -->
-            
+            </div><!-- // pagination -->
+            <a class="btn_more" href="{% url localtv_list_new %}">See More</a>
           </div><!-- // tabbed_pod -->
+          
+          <div id="mostpopular_mod" class="tabbed_pod pod clear">
+            <ul class="video_list clear">
+              {% for video in popular_videos|slice:":8" %}
+              <li class="video_item alt_item %}" class="clear">
+                {% include "localtv/related_video.html" %}
+              </li><!-- // video_item -->
+              {% endfor %}
+            </ul>
+            <div class="pagination" style="display: none;">
+              <a id="left_arrow" href="">[</a>
+              <a id="right_arrow" href="">]</a>
+              <ul class="pagination_slides clear">
+                <li><a href="">Page 1</a></li>
+                <li><a href="">Page 2</a></li>
+                <li><a href="">Page 3</a></li>
+                <li><a href="">Page 4</a></li>
+                <li><a href="">Page 5</a></li>
+              </ul>
+            </div><!-- // pagination -->
+            <a class="btn_more" href="{% url localtv_category "acategory" %}">See More</a>
+          </div><!-- // tabbed_pod -->
+          
+          <div id="morebyauthor_mod" class="tabbed_pod pod clear">
+            <ul class="video_list clear">
+              {% get_video_list_for_category "espresso" as espresso_list %}
+              {% for video in espresso_list|slice:":6" %}
+              <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
+                {% include "localtv/related_video.html" %}
+              </li><!-- // video_item -->
+              {% endfor %}
+            </ul>
+            <div class="pagination" style="display: none;">
+              <a id="left_arrow" href="">[</a>
+              <a id="right_arrow" href="">]</a>
+              <ul class="pagination_slides clear">
+                <li><a href="">Page 1</a></li>
+                <li><a href="">Page 2</a></li>
+                <li><a href="">Page 3</a></li>
+                <li><a href="">Page 4</a></li>
+                <li><a href="">Page 5</a></li>
+              </ul>
+            </div><!-- // pagination -->
+            <a class="btn_more" href="{% url localtv_category "espresso" %}">See More</a>
+          </div><!-- // tabbed_pod -->
+          
+          <div id="moreincategory_mod" class="tabbed_pod pod clear">
+            <ul class="video_list clear">
+              {% get_video_list_for_category "espresso" as espresso_list %}
+              {% for video in espresso_list|slice:":6" %}
+              <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
+                {% include "localtv/related_video.html" %}
+              </li><!-- // video_item -->
+              {% endfor %}
+            </ul>
+            <div class="pagination" style="display: none;">
+              <a id="left_arrow" href="">[</a>
+              <a id="right_arrow" href="">]</a>
+              <ul class="pagination_slides clear">
+                <li><a href="">Page 1</a></li>
+                <li><a href="">Page 2</a></li>
+                <li><a href="">Page 3</a></li>
+                <li><a href="">Page 4</a></li>
+                <li><a href="">Page 5</a></li>
+              </ul>
+            </div><!-- // pagination -->
+            <a class="btn_more" href="{% url localtv_category "espresso" %}">See More</a>
+          </div><!-- // tabbed_pod -->
+          
         </div><!-- // related_video -->
       </div><!-- // tabs_module -->
       </div><!-- // video_interact -->
@@ -324,12 +326,15 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
       <div class="sidebar">
         {% if current_video.authors.count %}
         {% with current_video.authors.all.0 as author %}
+        {% if author.get_profile.description %}
         <div id="about_author" class="video_side">
           <h2>About {{ author.first_name }} {{ author.last_name }} </h2>
           <p>{{ author.get_profile.description }}</p>
         </div><!-- // about_author -->
+        {% endif %}
         {% endwith %}
-	{% endif %}
+	      {% endif %}
+	      
         <div id="share_video" class="video_side">
           <h2>Share Video</h2>
             <ul>

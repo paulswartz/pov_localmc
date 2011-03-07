@@ -24,11 +24,11 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 
   {% if video.has_thumbnail or video.feed.has_thumbnail or video.search.has_thumbnail %}
   <div class="video_item_img">
-    <a href="{{ video.get_absolute_url }}{{ video_url_extra }}"><em class="icon">9</em><img class="video_img" src="{% get_thumbnail_url video 364 271 %}" /></a>
+    <a href="{{ video.get_absolute_url }}{{ video_url_extra }}"><em class="icon">9</em><div style="background: url({% get_thumbnail_url video 364 271 %}) center no-repeat; width: 270px; height: 151px;-webkit-border-radius: 5px; -moz-border-radius:    5px; -webkit-background-clip: padding-box;"></div></a>
   </div><!-- // video_item_img -->
   {% else %}
   <div class="video_item_img">
-    <a href="{{ video.get_absolute_url }}{{ video_url_extra }}"><em class="icon">9</em><img src="{% get_static_url "/images/default_big.jpg" %}" /></a>
+    <a href="{{ video.get_absolute_url }}{{ video_url_extra }}"><em class="icon">9</em><div style="background: url({% get_static_url "/images/default_big.jpg" %}) center no-repeat; width: 270px; height: 151px;-webkit-border-radius: 5px; -moz-border-radius:    5px; -webkit-background-clip: padding-box;"></div></a>
   </div><!-- // video_item_img -->
   {% endif %}
           

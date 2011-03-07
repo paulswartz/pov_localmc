@@ -21,7 +21,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 <div class="clear">
   <div id="video_container">
 {% if video.has_thumbnail %}
-  <a href="{{ video.get_absolute_url }}"><em class="icon">9</em><img src="{% get_thumbnail_url video 375 295 %}" class="" /></a>
+  <a href="{{ video.get_absolute_url }}"><em class="icon">9</em><div style="background: url({% get_thumbnail_url video 534 430 %}) center no-repeat; width: 399px; height: 220px; -webkit-border-radius: 10px; -moz-border-radius: 10px;"></div></a>
   {% else %}
   <a href="{{ video.get_absolute_url }}" ><img src="{% get_static_url "/images/default_big.jpg" %}" /></a>
   {% endif %}

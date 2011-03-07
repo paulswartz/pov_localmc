@@ -141,7 +141,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
         {% endblock %}
         <ul id="social_connect" class="clear">
           <li id="twitter"><a target="_blank" href="http://twitter.com/pghonvideo">Follow us on Twitter</a></li>
-          <li id="facebook"><a target="_blank" href="http://facebook.com/PittsburghFdn">Fan us on Facebook</a></li>
+          <li id="facebook"><a target="_blank" href="http://facebook.com/PittsburghFdn">Like us on Facebook</a></li>
           {% if sitelocation.display_submit_button %}<li><a href="" >Submit</a></li>{% endif %}
           <li id="submit"><a href="{% url localtv_submit_video %}" rel="#overlay">Submit a Video</a></li>
         </ul>
@@ -168,6 +168,8 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
         <ul id="nav" class="clear">
           <li><a href="{% url localtv_index %">Home</a></li>
           <li><a href="{% url localtv_about %">About</a></li>
+          {% if request.user.is_authenticated %}<li><a href="{% url localtv_user_profile %}">Your Profile</a></li>{% endif %}
+          <li><a href="{% url localtv_goodies_widget %}">Widgets</a></li>
           {% if user_is_admin %}
           <li class="signin"><a href="{{ settings.LOGOUT_URL }}?next={{ request.META.PATH_INFO }}">Sign Out</a></li>
           {% else %}

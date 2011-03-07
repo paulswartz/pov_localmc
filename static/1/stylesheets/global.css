@@ -189,7 +189,7 @@ Sub Navigation
 	position: absolute;
 	right: 225px;
 	top: 0;
-	width: 243px;
+	width: 246px;
 	background: #FFF;
 	padding: 2px 6px 2px 6px;
 	border-bottom-left-radius: 5px;
@@ -222,7 +222,7 @@ Sub Navigation
 	width: 75px;
 	position: relative;
 	top: 2px;
-	left: 5px;
+	left: 7px;
 	padding: 8px 7px 8px 7px;
 	line-height: 13px;
 	margin: 0;
@@ -332,7 +332,6 @@ Global Structure
 .video_meta ul.meta_list li {
   margin: 8px 0 8px 0;
   font-size: 13px;
-  font-weight: bold;
 }
 
 .video_meta ul.meta_list li em.icon {
@@ -386,10 +385,7 @@ Global Structure
 }
 
 #slideshow #video_container a img {
-	width: 399px;
-	height: 220px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius:    10px;
+	
 }
 
 #slideshow #video_container a em.icon {
@@ -572,8 +568,6 @@ ul.video_list li.video_item .video_item_img a {
 }
 
 ul.video_list li.video_item .video_item_img a .video_img {
-  width: 270px;
-	height: 151px;
   -webkit-border-radius: 5px;
   -moz-border-radius:    5px;
   -webkit-background-clip: padding-box;
@@ -664,7 +658,7 @@ ul.video_list li.video_item .video_meta .facebook_container {
 
 .featured_wthumb ul li a h4 {
   font-size: 14px;
-  margin: 0 0 5px 0;
+  margin: 0 0 5px 0 !important;
 }
 
 .featured_wthumb ul li a p {
@@ -673,6 +667,9 @@ ul.video_list li.video_item .video_meta .facebook_container {
   line-height: 16px;
   width: 225px;
   float: right;
+	padding: 0 !important;
+	margin: 0 !important;
+	overflow: none !important;
 }
 
 a.btn_more {

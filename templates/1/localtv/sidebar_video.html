@@ -18,17 +18,16 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
 {% load comments i18n localtv_thumbnail filters uploadtemplate_tags %}
+<a class="clear" href="{{ video.get_absolute_url }}{{ video_url_extra }}">
   {% if video.has_thumbnail %}
-   <div class="video_item_img"><a href="{{ video.get_absolute_url }}"><em class="icon">9</em><img class="video_img" src="{% get_thumbnail_url video 222 169 %}" /></a></div>
-  {% else %}
-    <div class="video_item_img"><a href="{{ video.get_absolute_url }}"><em class="icon">9</em><img class="video_img" src="{% get_static_url "/images/default_vid.gif" %}" /></a></div>
+      <div class="img" style="background: url({% get_thumbnail_url video 364 271 %}) center no-repeat; width: 45px; height: 45px;-webkit-border-radius: 5px; -moz-border-radius: 5px; -webkit-background-clip: padding-box;"></div>
+    {% else %}
+      <div class="img" style="background: url({% get_static_url "/images/default_vid.gif" %}) center no-repeat; width: 45px; height: 45px;-webkit-border-radius: 5px; -moz-border-radius: 5px; -webkit-background-clip: padding-box;"></div>
   {% endif %}
-  
-  <div class="video_meta">
-    <h2><a href="{{ video.get_absolute_url }}">{% if video.name %}{{ video.name }}</a></h2>
-      {% else %}
-      {% endif %}
-      <ul class="meta_list">
-        <li class="contributed clear">{% with video as instance %}{% include "localtv/inline_edit/video_authors.html" %}{% endwith %}</li>
-      </ul><!-- // meta_list -->
-  </div><!-- // video_meta -->
+
+{% if video.name %}
+<h4>{{ video.name }}</h4>
+{% else %}
+{% endif %}
+<p>{{ video.description }}</p>
+</a>
