@@ -18,43 +18,73 @@ You should have received a copy of the GNU Affero General Public License
 along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
-{% block body_id %}author_page{% endblock %}
+{% block body_id %}series{% endblock %}
+{% block body_class %}video{% endblock %}
 
-
-{% load filters pagetabs %}
+{% load filters pagetabs uploadtemplate_tags %}
 {% block content %}
+  <div id="video_header" class="clear">
+    <div id="video_header_content" class="clear">
+     <div id="subscribe">
+       <ul class="clear">
+         <li><a id="twitter" href=""><em class="icon"></em> Share on Twitter</a></li>
+         <li><a id="facebook" href=""><em class="icon"></em> Share on Facebook</a></li>
+         <li><a id="miro" href=""><em class="icon">f</em> Subscribe with Miro</a></li>
+         <li style="display: none;"><a class="rss" href="{% url localtv_feeds_author author.pk %}">RSS</a></li>
+       </ul>
+     </div><!-- // subscribe -->
+      <div id="video_title">
+        <!-- ><h1>{% if author.first_name %}{{ author.get_full_name }} ({{ author.username }}){% else %}{{ author.username }}{% endif %}</h1> -->
+      </div><!-- // video_title -->
+    </div><!-- // video_header_content -->
+  </div><!-- // video_header -->
 
-<div class="content">
-<div class="inner_content">
-
-<div id="category_sidebar">
-  {% if author.get_profile.logo %}<img src="{{ author.get_profile.logo.url }}">{% endif %}
-
-  <h1>{% if author.first_name %}{{ author.get_full_name }} ({{ author.username }}){% else %}{{ author.username }}{% endif %}</h1>
-  <a class="rss" href="{% url localtv_feeds_author author.pk %}">RSS</a>
-  {% if author.get_profile.location %}<div id="location">{{ author.get_profile.location }}</div>{% endif %}
-  {% if author.get_profile.website %}<div id="link">{{ author.get_profile.website|urlize }}</div>{% endif %}
-  <div>{{ author.get_profile.description|sanitize }}</div>
-
-</div>
-<div class="pag">
-  {% if page_obj.has_other_pages %}
-  <b>Pages</b>
-  {% pagetabs page_obj %}
-  {% endif %}
-</div>
-
-<div id="category_main">
-
-  <div id="individual">
-    <ul class="vid_list">
-      {% for video in video_list %}
-        {% include "localtv/video_listing_individual.html" %}
-      {% endfor %}
-    </ul>
-  </div>
-</div>
-</div>
-
-</div>
+  <div id="video_container" class="author_port">
+    <div id="video_port">
+      {% if author.get_profile.logo %}<div id="profile_pic"><img src="{{ author.get_profile.logo.url }}"></div>{% endif %}
+      <h1>{% if author.first_name %}{{ author.get_full_name }} ({{ author.username }}){% else %}{{ author.username }}{% endif %}</h1> 
+      {% if author.get_profile.location %}<div id="location">{{ author.get_profile.location }}</div>{% endif %}
+      {% if author.get_profile.website %}<div id="link">{{ author.get_profile.website|urlize }}</div>{% endif %}
+      {% if author.get_profile.description %}<div id="description">{{ author.get_profile.description|sanitize }}</div>{% endif %}
+    </div>
+  </div><!-- // video_container -->
+  
+  <div id="content_wrapper">
+    <div id="series_videos">
+    <div class="pod">
+      <div class="hd">
+        <h2>Other videos from {% if author.first_name %}{{ author.get_full_name }} ({{ author.username }}){% else %}{{ author.username }}{% endif %}</h2>
+      </div><!-- // hd -->
+      <div class="bd">
+      <ul class="video_list clear">
+        {% for video in video_list %}
+        <li class="video_item alt_item" class="clear">
+          {% include "localtv/video_listing_individual.html" %}
+        </li>
+        {% endfor %}
+      </ul>
+      </div><!-- // bd -->
+    </div><!-- // pod -->
+    </div><!-- // series_videos -->
+  
+  <div class="clear">
+    <div class="sidebar" style="display: none;">
+      {% if author.get_profile.description %}
+      <div id="about_author" class="video_side">
+        <h2>About Film Factory</h2>
+        <p>{{ author.get_profile.description|sanitize }}</p>
+      </div><!-- // about_author -->
+      {% endif %}
+      <div id="share_video" class="video_side">
+        <h2>Share Video</h2>
+        <ul>
+          <li id="facebook"><a href="">Share on Facebook</a></li>
+          <li id="twitter"><a href="">Share on Twitter</a></li>
+          <li id="email"><a href="">Email to Friends</a></li>
+        </ul>
+      </div><!-- share_video -->
+    </div><!-- // sidebar -->
+  </div><!-- // clear -->
+  <div class="clear"></div><!-- // clear -->
+  </div><!-- // wrapper -->
 {% endblock %}

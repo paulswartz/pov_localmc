@@ -45,13 +45,14 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 {% endblock %}
 
 {% block content %}
-
+{% if user_is_admin %}
   <div id="admin_single_video" class="admin_panel">
     <h2>Admin Controls</h2>
   {% if edit_video_form %}
     {% include "localtv/admin/edit_video_form.html" %}
   {% endif %}
   </div>
+{% endif %}
   
   <div id="video_header" class="clear">
     <div id="video_header_content" class="clear">
@@ -150,6 +151,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
             {% else %}
             {% if current_video.description %}
               {{ current_video.description|sanitize }}
+              
             {% else %}
               <p>No Description</p>
             {% endif %}<!-- // current_video.description -->

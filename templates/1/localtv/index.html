@@ -19,7 +19,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
 {% load localtv_thumbnail cache %}
-{% load comments filters uploadtemplate_tags %}
+{% load comments filters uploadtemplate_tags video_list %}
 {% block body_id %}index{% endblock %}
 {% block body_class %}home{% endblock %}
 
@@ -50,65 +50,80 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 <div class="clear">
   <div id="tabs_module">
   <ul class="tabbed_mod clear">
-    <li><a href="#entertainment_mod">Environment</a></li>
-    <li><a href="#art_module">Art &amp; Culture</a></li>
-    <li><a href="#stufff">Education</a></li>
-    <li><a href="#stf">Government</a></li>
-    <li><a href="#stuff">Things To Do</a></li>
+    <li><a href="#new_mod">New Videos</a></li>
+    <li><a href="#acategory_mod">A Category</a></li>
+    <li><a href="#espresso_mod">Espresso</a></li>
+    
   </ul>
-  <div id="entertainment_mod" class="video_module tabbed_pod pod">
-    <div id="video_list_container">
-	    <div id="video_list_slides">
-	      <div id="video_list_slide_items">
-          <ul class="video_list clear">
-            {% for video in new_videos|slice:":8" %}
-            <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
-              {% include "localtv/video_listing_individual.html" %}
-            </li>
-            {% endfor %}
-          </ul>
-        </div><!-- // video_list_slides_items -->
-      </div><!-- // video_list_slides -->
-      <div class="pagination">
-        <a id="left_arrow" href="">[</a>
-        <a id="right_arrow" href="">]</a>
-        <ul class="pagination_slides clear">
-          <li><a href="">Page 1</a></li>
-          <li><a href="">Page 2</a></li>
-          <li><a href="">Page 3</a></li>
-          <li><a href="">Page 4</a></li>
-          <li><a href="">Page 5</a></li>
+    <div id="new_mod" class="video_module tabbed_pod pod">
+      <ul class="video_list clear">
+          {% for video in new_videos|slice:":8" %}
+          <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
+            {% include "localtv/video_listing_individual.html" %}
+          </li>
+          {% endfor %}
         </ul>
-      </div><!-- // slideshow_pages -->
-    </div><!-- // video_list_container -->
+    <div class="pagination" style="display: none;">
+      <a id="left_arrow" href="">[</a>
+      <a id="right_arrow" href="">]</a>
+      <ul class="pagination_slides clear">
+        <li><a href="">Page 1</a></li>
+        <li><a href="">Page 2</a></li>
+        <li><a href="">Page 3</a></li>
+        <li><a href="">Page 4</a></li>
+        <li><a href="">Page 5</a></li>
+      </ul>
+    </div><!-- // slideshow_pages -->
+    <a class="btn_more" href="{% url localtv_list_new %}">See More <em class="icon">]</em></a>
   </div><!-- // video_module -->
-
-<!-- // module --> 
-
-  <div id="art_module" class="video_module tabbed_pod pod">
-    Stuff
-  </div>
   
-<!-- // module --> 
-
-  <div id="stufff" class="video_module tabbed_pod pod">
-    Stuff
-  </div><!-- // video_module --> 
-
-<!-- // module --> 
+  <div id="acategory_mod" class="video_module tabbed_pod pod">
+    <ul class="video_list clear">
+        {% get_video_list_for_category "acategory" as acategory_list %}
+        {% for video in acategory_list|slice:":8" %}
+        <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
+          {% include "localtv/video_listing_individual.html" %}
+        </li>
+        {% endfor %}
+      </ul>
+  <div class="pagination" style="display: none;">
+    <a id="left_arrow" href="">[</a>
+    <a id="right_arrow" href="">]</a>
+    <ul class="pagination_slides clear">
+      <li><a href="">Page 1</a></li>
+      <li><a href="">Page 2</a></li>
+      <li><a href="">Page 3</a></li>
+      <li><a href="">Page 4</a></li>
+      <li><a href="">Page 5</a></li>
+    </ul>
+  </div><!-- // slideshow_pages -->
+  <a class="btn_more" href="{% url localtv_category "acategory" %}">See More</a>
+</div><!-- // video_module -->
   
-  <div id="stf" class="video_module tabbed_pod pod">
-    Stuff
-  </div><!-- // video_module --> 
+  <div id="espresso_mod" class="video_module tabbed_pod pod">
+    <ul class="video_list clear">
+        {% get_video_list_for_category "espresso" as espresso_list %}
+        {% for video in espresso_list|slice:":8" %}
+        <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
+          {% include "localtv/video_listing_individual.html" %}
+        </li>
+        {% endfor %}
+      </ul>
+  <div class="pagination" style="display: none;">
+    <a id="left_arrow" href="">[</a>
+    <a id="right_arrow" href="">]</a>
+    <ul class="pagination_slides clear">
+      <li><a href="">Page 1</a></li>
+      <li><a href="">Page 2</a></li>
+      <li><a href="">Page 3</a></li>
+      <li><a href="">Page 4</a></li>
+      <li><a href="">Page 5</a></li>
+    </ul>
+  </div><!-- // slideshow_pages -->
+  <a class="btn_more" href="{% url localtv_category "espresso" %}">See More</a>
+</div><!-- // video_module -->
 
-<!-- // module --> 
-  
-  <div id="stuff" class="video_module tabbed_pod pod">
-    stuff
-  </div><!-- // video_module --> 
-
-<!-- // module --> 
-
+  <!-- // module --> 
   </div><!-- // tabs_module -->
   
   <div class="sidebar">

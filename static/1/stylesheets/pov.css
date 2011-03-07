@@ -339,15 +339,15 @@ ul.video_list li.video_item {
 }
 
 body.video #content #subscribe a#miro, body.video #content #subscribe a#miro .icon {
-  color: #af3844;
+  color: #005d8c;
 }
 
 body.video #content #subscribe a:hover#miro, body.video #content #subscribe a:hover#miro .icon {
-  color: #a85a62;
+  color: #7e0f34;
 }
 
 body#series #content #video_header {
-  background: #7e0f34;
+  background: #FFF;
 }
 
 body#series #content #series_footer {
@@ -355,8 +355,8 @@ body#series #content #series_footer {
 }
 
 body#series #content #video_title h1 {
-  color: #FFF;
-  text-shadow: 0 1px 0 #000;
+  color: #005d8c;
+  text-shadow: 0 1px 0 #fff;
 }
 
 /*
@@ -364,19 +364,19 @@ Series Subscribe Buttons
 */
 
 body#series #content #subscribe a#miro, body#series #content #subscribe a#miro .icon {
-  color: #FFF;
+  color: #005d8c;
 }
 
 body#series #content #subscribe a:hover#miro, body#series #content #subscribe a:hover#miro .icon {
-  color: #d9b6c2;
+  color: #7e0f34;
 }
 
 body#series #content #subscribe a#rss, body#series #content #subscribe a#rss .icon {
-  color: #FFF;
+  color: #005d8c;
 }
 
 body#series #content #subscribe a:hover#rss, body#series #content #subscribe a:hover#rss .icon {
-  color: #d9b6c2;
+  color: #7e0f34;
 }
 
 #footer #logo {

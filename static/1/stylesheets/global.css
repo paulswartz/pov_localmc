@@ -675,6 +675,29 @@ ul.video_list li.video_item .video_meta .facebook_container {
   float: right;
 }
 
+a.btn_more {
+	display: block;
+	float: right;
+	color: #555 !important;
+	font-weight: bold;
+	font-size: 14px;
+	background: #CCC;
+	padding: 8px 13px 8px 13px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	margin: 0 0 10px 0;
+}
+
+a:hover.btn_more {
+	background: #DDD;
+	color: #656565 !important;
+}
+
+a.btn_more em.icon {
+	font-size: 14px;
+	margin: 0 0 0 5px;
+}
+
 .wtitle ul li a h4 {
   font-size: 20px;
   margin: 15px 0 15px 0;
