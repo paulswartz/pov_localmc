@@ -181,7 +181,6 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
     </div><!-- // footer_wrap -->
   </div><!-- // footer -->
   {% endblock footer_wrapper %}
-  {% endif %}<!-- // if not request.is_ajax -->
   
   <!-- overlayed element --> 
   <div class="overlay" id="overlay"> 
@@ -210,5 +209,6 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
       pageTracker._trackPageview();
   } catch(err) {}</script>
   {% endif %}
+  {% endif %}<!-- // if not request.is_ajax -->
 </body>
 </html>
