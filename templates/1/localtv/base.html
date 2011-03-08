@@ -151,12 +151,16 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
       </div><!-- // header_wrap -->
     </div><!-- // header -->
     {% endif %}<!-- // if not request.is_ajax -->
+    {% if not request.is_ajax %}
     <div id="content" class="clear">
       <div id="wrapper" class="clear">
+	{% endif %}
         {% block content %}
         {% endblock content %}
+	{% if not request.is_ajax %}
       </div><!-- // wrapper -->
     </div><!-- // content -->
+    {% endif %}
     {% if not request.is_ajax %}
   {% block footer_wrapper %}
   <div id="footer">
