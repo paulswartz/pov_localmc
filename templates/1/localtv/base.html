@@ -112,6 +112,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
   </head>
 {% endif %}<!-- // if not request.is_ajax -->
 <body id="{% block body_id %}video_page{% endblock body_id %}" class="{% block body_class %}{% endblock %}">
+    {% block next_link %}<a id="next" href="{{ request.path }}"></a>{% endblock %}
     {% if not request.is_ajax %}
     <div id="header">
       <div id="topbar">
@@ -149,7 +150,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
           <h1 class="site_logo"><a href="{% url localtv_index %}">{{ sitelocation.site.name }}<em>{{ sitelocation.tagline|safe }}</em></a></h1>
         </div><!-- // logo -->
       </div><!-- // header_wrap -->
-    </div><!-- // header -->
+    </div><!-- // header ->-
     {% endif %}<!-- // if not request.is_ajax -->
     {% if not request.is_ajax %}
     <div id="content" class="clear">
