@@ -329,7 +329,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
         {% if author.get_profile.description %}
         <div id="about_author" class="video_side">
           <h2>About {{ author.first_name }} {{ author.last_name }} </h2>
-          <p>{{ author.get_profile.description }}</p>
+          <p>{{ author.get_profile.description|sanitize }}</p>
         </div><!-- // about_author -->
         {% endif %}
         {% endwith %}
