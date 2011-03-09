@@ -226,11 +226,11 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
         <div id="related_tabs_module">
          <div id="related_videos">
           <ul class="tabbed_mod clear">
-	    {% if related_videos_by_category.count %}
-            <li><a href="#acategory_mod">{{ current_video.categories.all.0.name }}</a></li>
-	    {% endif %}
 	    {% if related_videos_by_user.count %}
             <li><a href="#authors_mod">{{ current_video.authors.all.0.first_name }} {{ current_video.authors.all.0.last_name}}</a></li>
+	    {% endif %}
+	    {% if related_videos_by_category.count %}
+            <li><a href="#acategory_mod">{{ current_video.categories.all.0.name }}</a></li>
 	    {% endif %}
             <li><a href="#new_mod">New</a></li>
             <li><a href="#mostpopular_mod">Most watched</a></li>
