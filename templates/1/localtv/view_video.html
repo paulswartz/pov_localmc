@@ -260,8 +260,8 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
             <a class="btn_more" href="{% url localtv_list_new %}">See More</a>
           </div><!-- // tabbed_pod -->
 
+          {% if related_videos_by_user.count %}
           <div id="authors_mod" class="tabbed_pod pod clear">
-
             <ul class="video_list clear">
               {% for video in related_videos_by_user|slice:":3" %}
               <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
@@ -282,6 +282,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
             </div><!-- // pagination -->
             <a class="btn_more" href="{% url localtv_author current_video.authors.all.0.id %}">See More</a>
           </div><!-- // tabbed_pod -->
+	  {% endif %}
 
           <div id="mostpopular_mod" class="tabbed_pod pod clear">
 
@@ -307,6 +308,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
             <a class="btn_more" href="{% url localtv_list_popular %}">See More</a>
           </div><!-- // tabbed_pod -->
 
+	  {% if related_videos_by_category.count %}
           <div id="acategory_mod" class="tabbed_pod pod clear">
             <ul class="video_list clear">
               {% for video in related_videos_by_category|slice:":3" %}
@@ -328,8 +330,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
             </div><!-- // pagination -->
             <a class="btn_more" href="{% url localtv_category current_video.categories.all.0.slug %}">See More</a>
           </div><!-- // tabbed_pod -->
-
-
+	  {% endif %}
           
         </div><!-- // related_video -->
       </div><!-- // tabs_module -->
