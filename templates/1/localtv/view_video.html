@@ -57,8 +57,8 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
   <div id="video_header" class="clear">
     <div id="video_header_content" class="clear">
     <div id="subscribe">
-      <a id="rss" href=""><em class="icon">f</em> Subscribe to RSS</a>
-      <a id="miro" href=""><em class="icon">f</em> Subscribe with Miro</a>
+      <a id="rss" href="{{ new_rss }}"><em class="icon">f</em> Subscribe to RSS</a>
+      <a id="miro" href="http://subscribe.getmiro.com/?url1=http%3A//{{ sitelocation.site.domain|urlencode }}{{ new_rss|urlencode }}"><em class="icon">f</em> Subscribe with Miro</a>
     </div><!-- // subscribe -->
     
       <div id="video_title">

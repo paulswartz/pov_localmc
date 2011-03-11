@@ -19,8 +19,6 @@
 	/* CSS3 styling for latest browsers */
 	-moz-box-shadow:0 0 30px 5px #3476a1;
 	-webkit-box-shadow: 0 0 90px #000;
-	position: relative !important;
-	z-index: 999 !important;
 }
 
 /* container for external content. uses vertical scrollbar, if needed */

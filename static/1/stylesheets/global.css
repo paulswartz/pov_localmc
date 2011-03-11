@@ -448,8 +448,6 @@ Global Structure
 .tabbed_pod {
   -webkit-border-top-left-radius: 0 !important;
   -moz-border-radius-topleft: 0 !important;
-  position: relative;
-  z-index: 1;
   padding: 10px 10px 0 10px;
 }
 
@@ -458,29 +456,20 @@ Global Structure
 }
 
 .tabbed_mod {
-  position: relative;
-  top: 2px;
 }
 
 .tabbed_mod li {
   float: left;
   margin: 0 5px 0 0;
-  position: relative;
-  z-index: 0;
 }
 
 .tabbed_mod li#active, .tabbed_mod li.ui-state-active {
-  position: relative;
-  z-index: 2;
 }
 
 .ui-state-active {
-	z-index: 100;
 }
 
 .tabbed_mod li:hover {
-  position: relative;
-  z-index: 2;
 }
 
 .tabbed_mod li a {
@@ -501,18 +490,12 @@ Global Structure
 .text_tabs li {
   float: left;
   margin: 0 10px 0 0;
-  position: relative;
-  z-index: 1;
 }
 
 .text_tabs li#active, .text_tabs li.ui-state-active {
-  position: relative;
-  z-index: 2;
 }
 
 .text_tabs li:hover {
-  position: relative;
-  z-index: 2;
 }
 
 .text_tabs li a {
