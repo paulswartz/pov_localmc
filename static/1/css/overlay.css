@@ -8,6 +8,7 @@
 
 /* use a semi-transparent image for the overlay */
 #overlay {
+<<<<<<< HEAD
 	background:#efefef;
 	width: 600px;
 	text-align: left;
@@ -19,31 +20,47 @@
 	/* CSS3 styling for latest browsers */
 	-moz-box-shadow:0 0 30px 5px #3476a1;
 	-webkit-box-shadow: 0 0 90px #000;
+=======
+  background: #efefef !important;
+  position: relative !important;
+  width: 600px;
+  text-align: left;
+  color: #efefef;
+  height: 400px;
+  padding: 10px;
+  display: none;
+  
+  /* CSS3 styling for latest browsers */
+  -moz-box-shadow: 0 0 10px #000;
+  -webkit-box-shadow: 0 0 10px #000;
+	
+
+  /* place overlay on top of other elements */
+  z-index:10000;
+>>>>>>> c1aaab8233f6d468f632819acdf3609c421443bd
 }
 
 /* container for external content. uses vertical scrollbar, if needed */
 div.contentWrap {
-	height: auto !important;
-	background: #fff;
-	overflow-y:auto;
-	color: #000;
-	padding: 10px !important;
-	position: absolute !important;
-	z-index: 9999 !important;
+    height:400px;
+    background: #fff;
+    overflow-y:auto;
+    color: #000;
 }
 
 .close{
-	background:url(../images/close.png) no-repeat;
+	background:url(/images/close.png) no-repeat;
     position:absolute;
     right:-15px;
     top:-15px;
     cursor:pointer;
     height:32px;
     width:31px;
+    z-index: 10000;
 	}
 
 .close:hover{
-  background:url(../images/close.png) 0 -40px no-repeat;
+  background:url(/images/close.png) 0 -40px no-repeat;
 }
 
 /*////////////////////////////////////////////
@@ -70,9 +87,8 @@ div.contentWrap {
 }
 
 #submit_video h2 {
-	float: none;
-	font-size: 18px;
-	font-weight: bold;
+    float: none;
+    font-size: 18px;
 }
 #submit_video label {
 font-weight: bold;

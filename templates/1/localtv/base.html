@@ -102,7 +102,6 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 
   }
   //--><!]]></script>
-  <link rel="StyleSheet" type="text/css" href="{% get_static_url "/css/overlay.css" %}" />
   <title>{% block title %}{{ sitelocation.site.name }}{% if sitelocation.tagline %} - {{ sitelocation.tagline }}{% endif %}{% endblock title %}</title>
   {% block head %}
   <meta name="description" content="{{ sitelocation.about_html|striptags }}">
@@ -112,6 +111,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
   </head>
 {% endif %}<!-- // if not request.is_ajax -->
 <body id="{% block body_id %}video_page{% endblock body_id %}" class="{% block body_class %}{% endblock %}">
+    {% block next_link %}<a id="next" href="{{ request.path }}"></a>{% endblock %}
     {% if not request.is_ajax %}
     <div id="header">
       <div id="topbar">
@@ -149,14 +149,18 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
           <h1 class="site_logo"><a href="{% url localtv_index %}">{{ sitelocation.site.name }}<em>{{ sitelocation.tagline|safe }}</em></a></h1>
         </div><!-- // logo -->
       </div><!-- // header_wrap -->
-    </div><!-- // header -->
+    </div><!-- // header ->-
     {% endif %}<!-- // if not request.is_ajax -->
+    {% if not request.is_ajax %}
     <div id="content" class="clear">
       <div id="wrapper" class="clear">
+	{% endif %}
         {% block content %}
         {% endblock content %}
+	{% if not request.is_ajax %}
       </div><!-- // wrapper -->
     </div><!-- // content -->
+    {% endif %}
     {% if not request.is_ajax %}
   {% block footer_wrapper %}
   <div id="footer">

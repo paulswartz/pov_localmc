@@ -39,7 +39,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
     <li class="contributed clear">{% with video as instance %}{% include "localtv/inline_edit/video_authors.html" %}{% endwith %}</li>
   </ul>
   <div class="facebook_container">
-    <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fexample.com%2Fpage%2Fto%2Flike&amp;layout=standard&amp;show_faces=false&amp;width=225&amp;action=like&amp;font=lucida+grande&amp;colorscheme=light&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:225px; height:35px;" allowTransparency="true"></iframe>
+    <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A//{{ sitelocation.site.domain }}{{video.get_absolute_url|urlencode}}&amp;layout=standard&amp;show_faces=false&amp;width=225&amp;action=like&amp;font=lucida+grande&amp;colorscheme=light&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:225px; height:35px;" allowTransparency="true"></iframe>
   </div><!-- // facebook_container -->
 </div><!-- // video_meta -->
 </div><!-- // clear -->

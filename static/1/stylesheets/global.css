@@ -189,7 +189,7 @@ Sub Navigation
 	position: absolute;
 	right: 225px;
 	top: 0;
-	width: 246px;
+	width: 238px;
 	background: #FFF;
 	padding: 2px 6px 2px 6px;
 	border-bottom-left-radius: 5px;
@@ -219,13 +219,14 @@ Sub Navigation
 
 #search_form form#search button {
 	float: left;
-	width: 75px;
 	position: relative;
 	top: 2px;
 	left: 7px;
-	padding: 8px 7px 8px 7px;
+	padding: 8px 12px 8px 12px;
 	line-height: 13px;
 	margin: 0;
+	font-size: 12px;
+	text-align: left;
 }
 
 #search_form form#search button:hover {
