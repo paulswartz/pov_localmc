@@ -222,10 +222,15 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
         </div><!-- // tabs_module -->
 
         {% get_video_list_for_user current_video.authors.all as related_videos_by_user %}
-        {% if current_video.categories.all.count %}
-            {% get_video_list_for_category current_video.categories.all.0 as related_videos_by_category %}
+        {% if current_video.categories.all.count  %}
+            {% get_video_list_for_category current_video.categories.all.0 as related_videos_by_first_category %}
         {% else %}
-            {% get_video_list_for_category '__no__such__category__' as related_videos_by_category %}
+            {% get_video_list_for_category '__no__such__category__' as related_videos_by_first_category %}
+        {% endif %}
+        {% if current_video.categories.all.count > 1  %}
+            {% get_video_list_for_category current_video.categories.all.1 as related_videos_by_second_category %}
+        {% else %}
+            {% get_video_list_for_category '__no__such__category__' as related_videos_by_second_category %}
         {% endif %}
 
         <div id="related_tabs_module">
@@ -234,8 +239,11 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 	    {% if related_videos_by_user.count %}
             <li><a href="#authors_mod">{{ current_video.authors.all.0.username }}</a></li>
 	    {% endif %}
-	    {% if related_videos_by_category.count %}
+	    {% if related_videos_by_first_category.count %}
             <li><a href="#acategory_mod">{{ current_video.categories.all.0.name }}</a></li>
+	    {% endif %}
+	    {% if related_videos_by_second_category.count %}
+            <li><a href="#secondcategory_mod">{{ current_video.categories.all.1.name }}</a></li>
 	    {% endif %}
             <li><a href="#new_mod">New</a></li>
             <li><a href="#mostpopular_mod">Most watched</a></li>
@@ -313,10 +321,10 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
             <a class="btn_more" href="{% url localtv_list_popular %}">See More</a>
           </div><!-- // tabbed_pod -->
 
-	  {% if related_videos_by_category.count %}
+	  {% if related_videos_by_first_category.count %}
           <div id="acategory_mod" class="tabbed_pod pod clear">
             <ul class="video_list clear">
-              {% for video in related_videos_by_category|slice:":3" %}
+              {% for video in related_videos_by_first_category|slice:":3" %}
               <li class="video_item alt_item" class="clear">
                 {% include "localtv/related_video.html" %}
               </li><!-- // video_item -->
@@ -336,6 +344,31 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
             <a class="btn_more" href="{% url localtv_category current_video.categories.all.0.slug %}">See More</a>
           </div><!-- // tabbed_pod -->
 	  {% endif %}
+
+	  {% if related_videos_by_second_category.count %}
+          <div id="secondcategory_mod" class="tabbed_pod pod clear">
+            <ul class="video_list clear">
+              {% for video in related_videos_by_second_category|slice:":3" %}
+              <li class="video_item alt_item" class="clear">
+                {% include "localtv/related_video.html" %}
+              </li><!-- // video_item -->
+              {% endfor %}
+            </ul>
+            <div class="pagination" style="display: none;">
+              <a id="left_arrow" href="">[</a>
+              <a id="right_arrow" href="">]</a>
+              <ul class="pagination_slides clear">
+                <li><a href="">Page 1</a></li>
+                <li><a href="">Page 2</a></li>
+                <li><a href="">Page 3</a></li>
+                <li><a href="">Page 4</a></li>
+                <li><a href="">Page 5</a></li>
+              </ul>
+            </div><!-- // pagination -->
+            <a class="btn_more" href="{% url localtv_category current_video.categories.all.1.slug %}">See More</a>
+          </div><!-- // tabbed_pod -->
+	  {% endif %}
+          
           
         </div><!-- // related_video -->
       </div><!-- // tabs_module -->
