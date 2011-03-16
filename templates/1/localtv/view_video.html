@@ -222,7 +222,11 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
         </div><!-- // tabs_module -->
 
         {% get_video_list_for_user current_video.authors.all as related_videos_by_user %}
-        {% get_video_list_for_category current_video.categories.all.0 as related_videos_by_category %}
+        {% if current_video.categories.all.count %}
+            {% get_video_list_for_category current_video.categories.all.0 as related_videos_by_category %}
+        {% else %}
+            {% get_video_list_for_category '__no__such__category__' as related_videos_by_category %}
+        {% endif %}
 
         <div id="related_tabs_module">
          <div id="related_videos">
