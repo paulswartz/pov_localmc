@@ -56,10 +56,12 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
   
   <div id="video_header" class="clear">
     <div id="video_header_content" class="clear">
+    {% comment %}
     <div id="subscribe">
       <a id="rss" href="{{ new_rss }}"><em class="icon">f</em> Subscribe to RSS</a>
       <a id="miro" href="http://subscribe.getmiro.com/?url1=http%3A//{{ sitelocation.site.domain|urlencode }}{{ new_rss|urlencode }}"><em class="icon">f</em> Subscribe with Miro</a>
     </div><!-- // subscribe -->
+    {% endcomment %}
     
       <div id="video_title">
         {% if user_is_admin %}
@@ -119,7 +121,6 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
         <div class="facebook_container">
         <iframe src="http://www.facebook.com/plugins/like.php?href=http://{{ sitelocation.site.domain }}{{ request.META.PATH_INFO|urlencode }}&amp;layout=standard&amp;show_faces=false&amp;width=400&amp;action=like&amp;font=lucida+grande&amp;colorscheme=light&amp;height=25" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:400px; height:25px;" allowTransparency="true"></iframe>
         </div><!-- // facebook_container -->
-
         <div id="category">
           {% if user_is_admin %}
             {% editable_widget current_video "categories" %}
@@ -227,7 +228,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
          <div id="related_videos">
           <ul class="tabbed_mod clear">
 	    {% if related_videos_by_user.count %}
-            <li><a href="#authors_mod">{{ current_video.authors.all.0.first_name }} {{ current_video.authors.all.0.last_name}}</a></li>
+            <li><a href="#authors_mod">{{ current_video.authors.all.0.username }}</a></li>
 	    {% endif %}
 	    {% if related_videos_by_category.count %}
             <li><a href="#acategory_mod">{{ current_video.categories.all.0.name }}</a></li>
@@ -241,8 +242,8 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
             <ul class="video_list clear">
 	      {% get_video_list_new as new_videos %}
               {% for video in new_videos|slice:":3" %}
-              <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
-                {% include "localtv/sidebar_video.html" %}
+              <li class="video_item alt_item" class="clear">
+                {% include "localtv/related_video.html" %}
               </li><!-- // video_item -->
               {% endfor %}
             </ul>
@@ -264,8 +265,8 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
           <div id="authors_mod" class="tabbed_pod pod clear">
             <ul class="video_list clear">
               {% for video in related_videos_by_user|slice:":3" %}
-              <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
-                {% include "localtv/sidebar_video.html" %}
+              <li class="video_item alt_item" class="clear">
+                {% include "localtv/related_video.html" %}
               </li><!-- // video_item -->
               {% endfor %}
             </ul>
@@ -289,8 +290,8 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
             <ul class="video_list clear">
 	      {% get_video_list_popular as popular_videos %}
               {% for video in popular_videos|slice:":3" %}
-              <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
-                {% include "localtv/sidebar_video.html" %}
+              <li class="video_item alt_item" class="clear">
+                {% include "localtv/related_video.html" %}
               </li><!-- // video_item -->
               {% endfor %}
             </ul>
@@ -312,8 +313,8 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
           <div id="acategory_mod" class="tabbed_pod pod clear">
             <ul class="video_list clear">
               {% for video in related_videos_by_category|slice:":3" %}
-              <li class="video_item alt_item %}" class="clear">
-                {% include "localtv/sidebar_video.html" %}
+              <li class="video_item alt_item" class="clear">
+                {% include "localtv/related_video.html" %}
               </li><!-- // video_item -->
               {% endfor %}
             </ul>

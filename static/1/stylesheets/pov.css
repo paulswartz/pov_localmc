@@ -431,12 +431,14 @@ body#series #content #subscribe a:hover#rss, body#series #content #subscribe a:h
 }
 
 #getstarted .bd h3 {
-  margin: 5px 0 0 0;
+  margin: 0 0 10px 0;
+	font-size: 14px;
+	color: #444;
 }
 
 #getstarted .hd h2 em {
   font-weight: normal;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 #getstarted .bd div.this_week_video a {

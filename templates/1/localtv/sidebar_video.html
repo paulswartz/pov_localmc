@@ -26,8 +26,8 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
   {% endif %}
 
 {% if video.name %}
-<h4>{{ video.name }}</h4>
+<h4>{{ video.name|slice:":65" }}</h4>
 {% else %}
 {% endif %}
-<p>{{ video.description }}</p>
+<p>{{ video.description|slice:":150"|sanitize:"whitelist|a br p|href"|removetags:"a" }}</p>
 </a>

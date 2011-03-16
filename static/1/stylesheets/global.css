@@ -227,6 +227,8 @@ Sub Navigation
 	margin: 0;
 	font-size: 12px;
 	text-align: left;
+	font-weight: normal;
+	display: block;
 }
 
 #search_form form#search button:hover {
@@ -464,7 +466,8 @@ Global Structure
   margin: 0 5px 0 0;
 }
 
-.tabbed_mod li#active, .tabbed_mod li.ui-state-active {
+.tabbed_mod li#active a, .tabbed_mod li.ui-state-active a {
+	color: #000;
 }
 
 .ui-state-active {

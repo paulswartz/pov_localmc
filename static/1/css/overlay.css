@@ -8,7 +8,6 @@
 
 /* use a semi-transparent image for the overlay */
 #overlay {
-<<<<<<< HEAD
 	background:#efefef;
 	width: 600px;
 	text-align: left;
@@ -17,27 +16,9 @@
 	padding: 10px;
 	display: none;
 	border: 1px solid #225d84;
-	/* CSS3 styling for latest browsers */
-	-moz-box-shadow:0 0 30px 5px #3476a1;
-	-webkit-box-shadow: 0 0 90px #000;
-=======
-  background: #efefef !important;
-  position: relative !important;
-  width: 600px;
-  text-align: left;
-  color: #efefef;
-  height: 400px;
-  padding: 10px;
-  display: none;
-  
   /* CSS3 styling for latest browsers */
   -moz-box-shadow: 0 0 10px #000;
   -webkit-box-shadow: 0 0 10px #000;
-	
-
-  /* place overlay on top of other elements */
-  z-index:10000;
->>>>>>> c1aaab8233f6d468f632819acdf3609c421443bd
 }
 
 /* container for external content. uses vertical scrollbar, if needed */

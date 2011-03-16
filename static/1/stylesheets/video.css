@@ -143,11 +143,25 @@ body.video #content #video_meta #category em.icon {
 	float: right;
 }
 
+body.video #content #video_meta #category h4 {
+	float: left;
+	margin: 0 25px 0 0;
+}
+
 body.video #content #video_meta #category ul {
 	float: right;
 	position: relative;
-	top: 4px;
+	top: 0;
 	right: 15px;
+}
+
+body.video #content #video_meta #category ul li {
+	float: left;
+	margin: 0 0 0 10px;
+}
+
+body.video #content #video_meta #category .simple_overlay ul li {
+	margin: 0 0 0 15px !important;
 }
 
 body.video #content .facebook_container {

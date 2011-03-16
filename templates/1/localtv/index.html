@@ -50,11 +50,13 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 <div class="clear">
   <div id="tabs_module">
   <ul class="tabbed_mod clear">
-    <li><a href="#new_mod">New Videos</a></li>
-    <li><a href="#acategory_mod">A Category</a></li>
-    <li><a href="#espresso_mod">Espresso</a></li>
-    
+    <li><a href="#artculture_mod">Art &amp; Culture</a></li>
+    <li><a href="#digitalearning_mod">Digital Learning</a></li>
+    <li><a href="#entertainment_mod">Entertainment</a></li>
+    <li><a href="#aroundtown_mod">Around Town</a></li>
+    <li><a href="#nonprofitnews_mod">Nonprofit News</a></li>
   </ul>
+    {% comment %}
     <div id="new_mod" class="video_module tabbed_pod pod">
       <ul class="video_list clear">
           {% for video in new_videos|slice:":10" %}
@@ -76,11 +78,12 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
     </div><!-- // slideshow_pages -->
     <a class="btn_more" href="{% url localtv_list_new %}">See More <em class="icon">]</em></a>
   </div><!-- // video_module -->
+  {% endcomment %}
   
-  <div id="acategory_mod" class="video_module tabbed_pod pod">
+  <div id="artculture_mod" class="video_module tabbed_pod pod">
     <ul class="video_list clear">
-        {% get_video_list_for_category "acategory" as acategory_list %}
-        {% for video in acategory_list|slice:":8" %}
+        {% get_video_list_for_category "art-and-culture" as artculture_list %}
+        {% for video in artculture_list|slice:":8" %}
         <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
           {% include "localtv/video_listing_individual.html" %}
         </li>
@@ -97,13 +100,13 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
       <li><a href="">Page 5</a></li>
     </ul>
   </div><!-- // slideshow_pages -->
-  <a class="btn_more" href="{% url localtv_category "acategory" %}">See More</a>
+  <a class="btn_more" href="{% url localtv_category "art-and-culture" %}">See More</a>
 </div><!-- // video_module -->
   
-  <div id="espresso_mod" class="video_module tabbed_pod pod">
+  <div id="digitalearning_mod" class="video_module tabbed_pod pod">
     <ul class="video_list clear">
-        {% get_video_list_for_category "espresso" as espresso_list %}
-        {% for video in espresso_list|slice:":8" %}
+        {% get_video_list_for_category "digital-learning" as digitalearning_list %}
+        {% for video in digitalearning_list|slice:":8" %}
         <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
           {% include "localtv/video_listing_individual.html" %}
         </li>
@@ -120,8 +123,77 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
       <li><a href="">Page 5</a></li>
     </ul>
   </div><!-- // slideshow_pages -->
-  <a class="btn_more" href="{% url localtv_category "espresso" %}">See More</a>
+  <a class="btn_more" href="{% url localtv_category "digital-learning" %}">See More</a>
 </div><!-- // video_module -->
+
+<div id="entertainment_mod" class="video_module tabbed_pod pod">
+  <ul class="video_list clear">
+      {% get_video_list_for_category "entertainment" as entertainment_list %}
+      {% for video in environment_list|slice:":8" %}
+      <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
+        {% include "localtv/video_listing_individual.html" %}
+      </li>
+      {% endfor %}
+    </ul>
+<div class="pagination" style="display: none;">
+  <a id="left_arrow" href="">[</a>
+  <a id="right_arrow" href="">]</a>
+  <ul class="pagination_slides clear">
+    <li><a href="">Page 1</a></li>
+    <li><a href="">Page 2</a></li>
+    <li><a href="">Page 3</a></li>
+    <li><a href="">Page 4</a></li>
+    <li><a href="">Page 5</a></li>
+  </ul>
+</div><!-- // slideshow_pages -->
+<a class="btn_more" href="{% url localtv_category "entertainment" %}">See More</a>
+</div><!-- // video_module -->
+
+<div id="nonprofitnews_mod" class="video_module tabbed_pod pod">
+  <ul class="video_list clear">
+      {% get_video_list_for_category "nonprofit-news" as nonprofitnews_list %}
+      {% for video in nonprofitnews_list|slice:":8" %}
+      <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
+        {% include "localtv/video_listing_individual.html" %}
+      </li>
+      {% endfor %}
+    </ul>
+<div class="pagination" style="display: none;">
+  <a id="left_arrow" href="">[</a>
+  <a id="right_arrow" href="">]</a>
+  <ul class="pagination_slides clear">
+    <li><a href="">Page 1</a></li>
+    <li><a href="">Page 2</a></li>
+    <li><a href="">Page 3</a></li>
+    <li><a href="">Page 4</a></li>
+    <li><a href="">Page 5</a></li>
+  </ul>
+</div><!-- // slideshow_pages -->
+<a class="btn_more" href="{% url localtv_category "nonprofit-news" %}">See More</a>
+</div><!-- // video_module -->
+  
+  <div id="aroundtown_mod" class="video_module tabbed_pod pod">
+    <ul class="video_list clear">
+        {% get_video_list_for_category "around-town" as aroundtown_list %}
+        {% for video in aroundtown_list|slice:":8" %}
+        <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
+          {% include "localtv/video_listing_individual.html" %}
+        </li>
+        {% endfor %}
+      </ul>
+  <div class="pagination" style="display: none;">
+    <a id="left_arrow" href="">[</a>
+    <a id="right_arrow" href="">]</a>
+    <ul class="pagination_slides clear">
+      <li><a href="">Page 1</a></li>
+      <li><a href="">Page 2</a></li>
+      <li><a href="">Page 3</a></li>
+      <li><a href="">Page 4</a></li>
+      <li><a href="">Page 5</a></li>
+    </ul>
+  </div><!-- // slideshow_pages -->
+  <a class="btn_more" href="{% url localtv_category "around-town" %}">See More</a>
+  </div><!-- // video_module -->
 
   <!-- // module --> 
   </div><!-- // tabs_module -->
@@ -133,6 +205,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
       </div><!-- // bd -->
     </div><!-- // pod -->
     
+    {% comment %}
     <div class="pod" id="getstarted">
       <div class="hd">
         <h2>Get Started <em>— What Pittsburgh has to offer</em></h2>
@@ -149,17 +222,33 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
         </div><!-- // email_newsletter -->
       </div><!-- // bd -->
     </div><!-- // pod -->
+    {% endcomment %}
+    
+    <div class="pod" id="getstarted">
+      <div class="hd">
+        <h2>New on POV <em>— Watch. Submit. Share. Learn.</em></h2>
+      </div><!-- // hd -->
+      <div class="bd clear">
+        <h3>Connecting the community through video.</h3>
+        <div class="this_week_video">
+          {% for video in new_videos|slice:":3" %}
+            <a href="{{ video.get_absolute_url }}{{ video_url_extra }}">{{ video.name|slice:":45" }}</a>
+          {% endfor %}
+        </div><!-- // this_week_video -->
+        <a style="margin: 5px 0 0 0;" class="btn_more" href="{% url localtv_list_new %}">See More <em class="icon">]</em></a>
+      </div><!-- // bd -->
+    </div><!-- // pod -->
     
     <div class="pod featured_wthumb">
       <div class="hd">
-        <h2>Pittsburgh Stories</h2>
+        <h2>In and Around Pittsburgh</h2>
       </div><!-- // hd -->
       <div class="bd">
         <ul class="clear">
           <li><a class="clear" href="">
             <img src="http://s3.mirocommunity.org.s3.amazonaws.com/pittsburgh/localtv/video_thumbs/1436/140x110.png?e92deacf" />
-            <h4>One Minute Jr</h4>
-            <p>Short videos that show a slice of life. These videos were selected as winners in the Voices of Youth competition.</p>
+            <h4>POV Correspondents</h4>
+            <p>The latest news from Pittsburgh on Video correspondents on the ground.</p>
           </a></li>
         </ul>
       </div><!-- // bd -->
@@ -167,13 +256,13 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
     
     <div class="pod featured_wthumb">
       <div class="hd">
-        <h2>Pittsburgh in Focus</h2>
+        <h2>Pittsburgh Filmmakers</h2>
       </div><!-- // hd -->
       <div class="bd">
         <ul>
-          <li><a class="clear" href="/series">
+          <li><a class="clear" href="http://pittsburghonvideo.org/author/125">
             <img src="/images/voy_sample.jpg" />
-            <h4>Voices of Youth</h4>
+            <h4>Matthew R. Day</h4>
             <p>Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere.</p>
           </a></li>
         </ul>
@@ -210,20 +299,20 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
       </div><!-- // hd -->
       <div class="bd">
         <ul>
-          <li><a class="clear" href="http://www.toonseum.org">
+          <li><a class="clear" href="http://pittsburghonvideo.org/author/9">
             <img src="http://i4.ytimg.com/i/c8oudKLivnHwYPyszGHJkg/1.jpg?v=845851" />
             <h4>Toonseum</h4>
-            <p>The mission of the ToonSeum is to celebrate the art of cartooning.</p>
+            <p>ToonSeum celebrates the art of cartooning. Our goal is to promote a deeper appreciation of the cartoonists and their work.</p>
           </a></li>
-          <li><a class="clear" href="http://www.streetfilms.org/">
-            <img src="http://b.vimeocdn.com/ps/357/357910_300.jpg" />
-            <h4>Streetfilms</h4>
-            <p>Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere.</p>
+          <li><a class="clear" href="http://pittsburghonvideo.org/author/20">
+            <img src="http://img.youtube.com/vi/40uVxg_dyaE/hqdefault.jpg" />
+            <h4>Pittsburgh Zoo</h4>
+            <p>The Pittsburgh Zoo & PPG Aquarium strives to foster positive, lifelong connections between animals and people.</p>
           </a></li>
-          <li class="last"><a class="clear" href="http://www.mattress.org/">
-            <img src="http://www.mattress.org/images/logo.gif" />
-            <h4>Mattress Factory</h4>
-            <p>Museum of contemporary art that exhibits room-sized works called installations, created on site by artists from around the world.</p>
+          <li class="last"><a class="clear" href="http://pittsburghonvideo.org/author/119">
+            <img src="http://i3.ytimg.com/i/jC-ghxb4VZPog5V8rZ8RJw/1.jpg?v=6b0257" />
+            <h4>Heinz College</h4>
+            <p>Carnegie Mellon University's H. John Heinz III College offers top-ranked graduate degree and executive education programs in public policy and information systems.</p>
           </a></li>
         </ul>
       </div><!-- // bd -->

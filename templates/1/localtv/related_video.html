@@ -29,7 +29,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
   {% endif %}
   
   <div class="video_meta">
-    <h2><a href="{{ video.get_absolute_url }}">{% if video.name %}{{ video.name }}</a></h2>
+    <h2><a href="{{ video.get_absolute_url }}">{% if video.name %}{{ video.name|slice:":57" }}</a></h2>
       {% else %}
       {% endif %}
       <ul class="meta_list">
