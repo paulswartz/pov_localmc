@@ -59,7 +59,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
     {% comment %}
     <div id="new_mod" class="video_module tabbed_pod pod">
       <ul class="video_list clear">
-          {% for video in new_videos|slice:":10" %}
+          {% for video in new_videos|slice:":12" %}
           <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
             {% include "localtv/video_listing_individual.html" %}
           </li>
@@ -83,7 +83,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
   <div id="artculture_mod" class="video_module tabbed_pod pod">
     <ul class="video_list clear">
         {% get_video_list_for_category "art-and-culture" as artculture_list %}
-        {% for video in artculture_list|slice:":8" %}
+        {% for video in artculture_list|slice:":12" %}
         <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
           {% include "localtv/video_listing_individual.html" %}
         </li>
@@ -106,7 +106,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
   <div id="digitalearning_mod" class="video_module tabbed_pod pod">
     <ul class="video_list clear">
         {% get_video_list_for_category "digital-learning" as digitalearning_list %}
-        {% for video in digitalearning_list|slice:":8" %}
+        {% for video in digitalearning_list|slice:":12" %}
         <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
           {% include "localtv/video_listing_individual.html" %}
         </li>
@@ -129,7 +129,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 <div id="entertainment_mod" class="video_module tabbed_pod pod">
   <ul class="video_list clear">
       {% get_video_list_for_category "entertainment" as entertainment_list %}
-      {% for video in environment_list|slice:":8" %}
+      {% for video in environment_list|slice:":12" %}
       <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
         {% include "localtv/video_listing_individual.html" %}
       </li>
@@ -152,7 +152,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 <div id="nonprofitnews_mod" class="video_module tabbed_pod pod">
   <ul class="video_list clear">
       {% get_video_list_for_category "nonprofit-news" as nonprofitnews_list %}
-      {% for video in nonprofitnews_list|slice:":8" %}
+      {% for video in nonprofitnews_list|slice:":12" %}
       <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
         {% include "localtv/video_listing_individual.html" %}
       </li>
@@ -175,7 +175,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
   <div id="aroundtown_mod" class="video_module tabbed_pod pod">
     <ul class="video_list clear">
         {% get_video_list_for_category "around-town" as aroundtown_list %}
-        {% for video in aroundtown_list|slice:":8" %}
+        {% for video in aroundtown_list|slice:":12" %}
         <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
           {% include "localtv/video_listing_individual.html" %}
         </li>
@@ -245,8 +245,8 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
       </div><!-- // hd -->
       <div class="bd">
         <ul class="clear">
-          <li><a class="clear" href="">
-            <img src="http://s3.mirocommunity.org.s3.amazonaws.com/pittsburgh/localtv/video_thumbs/1436/140x110.png?e92deacf" />
+          <li><a class="clear" href="http://pittsburghonvideo.org/category/pov-correspondents">
+            <img src="http://b.vimeocdn.com/ts/133/920/133920723_640.jpg" />
             <h4>POV Correspondents</h4>
             <p>The latest news from Pittsburgh on Video correspondents on the ground.</p>
           </a></li>
@@ -256,14 +256,14 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
     
     <div class="pod featured_wthumb">
       <div class="hd">
-        <h2>Pittsburgh Filmmakers</h2>
+        <h2>Local Filmmaker Spotlight</h2>
       </div><!-- // hd -->
       <div class="bd">
         <ul>
           <li><a class="clear" href="http://pittsburghonvideo.org/author/125">
-            <img src="/images/voy_sample.jpg" />
+            <img src="http://b.vimeocdn.com/ps/834/834109_300.jpg" />
             <h4>Matthew R. Day</h4>
-            <p>Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere.</p>
+            <p>Day is a Pittsburgh based movie maker working with film, video, and computer animation. He currently works at Pittsburgh Filmmakers where among other jobs he is a director, cameraman, and editor making movies for Production Services.</p>
           </a></li>
         </ul>
       </div><!-- // bd -->

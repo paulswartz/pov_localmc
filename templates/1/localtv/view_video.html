@@ -343,7 +343,9 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
         {% if author.get_profile.description %}
         <div id="about_author" class="video_side">
           <h2>About {{ author.first_name }} {{ author.last_name }} </h2>
-          <p>{{ author.get_profile.description|sanitize }}</p>
+          <p>{{ author.get_profile.description|slice:":200"|sanitize }}</p>
+          <a style="margin-bottom: 25px;" class="btn_more" href="{% url localtv_author user.pk %}">Full Profile</a>
+          <div class="clear"></div>
         </div><!-- // about_author -->
         {% endif %}
         {% endwith %}
