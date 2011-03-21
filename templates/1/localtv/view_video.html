@@ -152,15 +152,14 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
             {% editable_widget current_video "description" %}
             {% else %}
             {% if current_video.description %}
-              {{ current_video.description|sanitize }}
-              
+              <div class="description">{{ current_video.description|sanitize }}</div>
             {% else %}
               <p>No Description</p>
             {% endif %}<!-- // current_video.description -->
             {% endif %}<!-- // if user_is_admin.description -->
             
             {% if current_video.website_url %}
-              <a id="original_video" href="{{ current_video.website_url }}"><em class="icon">A</em> See video on its original page</a>
+              <div><a id="original_video" href="{{ current_video.website_url }}"><em class="icon">A</em> See video on its original page</a></div>
             {% endif %}<!-- // current_video.website_url -->
           </div><!-- // video_description -->
           

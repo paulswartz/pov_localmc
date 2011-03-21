@@ -129,7 +129,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 <div id="entertainment_mod" class="video_module tabbed_pod pod">
   <ul class="video_list clear">
       {% get_video_list_for_category "entertainment" as entertainment_list %}
-      {% for video in environment_list|slice:":12" %}
+      {% for video in entertainment_list|slice:":12" %}
       <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
         {% include "localtv/video_listing_individual.html" %}
       </li>
@@ -261,7 +261,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
       <div class="bd">
         <ul>
           <li><a class="clear" href="http://pittsburghonvideo.org/author/125">
-            <img src="http://b.vimeocdn.com/ps/834/834109_300.jpg" />
+            <img src="{% get_static_url "/images/mattday_pic.png" %}" />
             <h4>Matthew R. Day</h4>
             <p>Day is a Pittsburgh based movie maker working with film, video, and computer animation. He currently works at Pittsburgh Filmmakers where among other jobs he is a director, cameraman, and editor making movies for Production Services.</p>
           </a></li>

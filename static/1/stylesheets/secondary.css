@@ -66,6 +66,10 @@ body#about_page #about_miro {
 	margin: 60px 0 0 0;
 }
 
+body#about_page p {
+	line-height: 26px;
+}
+
 body#category_page .pod .bd p.category_description {
 	padding: 5px 10px 10px 10px;
 	font-size: 14px;

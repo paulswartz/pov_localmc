@@ -726,6 +726,10 @@ a.btn_more em.icon {
   float: right;
 }
 
+#footer #nav {
+	float: right;
+}
+
 #footer #nav li {
   float: left;
   display: block;
@@ -740,7 +744,7 @@ a.btn_more em.icon {
 #footer p#powered_mc {
   background: #FFF;
   color: #888;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
   display: block;
   padding: 10px;
@@ -755,5 +759,26 @@ a.btn_more em.icon {
 }
 
 #footer p#powered_mc a:hover {
+  text-decoration: underline;
+}
+
+#footer p#resource_fdn {
+  background: #FFF;
+  color: #888;
+  font-size: 12px;
+  font-weight: bold;
+  display: block;
+  padding: 10px;
+  margin: 20px 10px 0 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  float: right;
+}
+
+#footer p#resource_fdn a {
+  color: #b30026;
+}
+
+#footer p#resource_fdn a:hover {
   text-decoration: underline;
 }
