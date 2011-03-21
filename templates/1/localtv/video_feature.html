@@ -32,7 +32,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
   {% else %}
   <h2><a href="{{ video.get_absolute_url }}">{% trans "(no title)" %}</a></h2>
   {% endif %}
-  <p>{{ video.description|slice:":275"|sanitize:"whitelist|a br p|href" }}</p>
+  <p>{{ video.description|slice:":260"|sanitize:"whitelist|a br p|href" }}</p>
   
   <ul class="meta_list">
     <li class="date"><em class="icon">\</em> Featured {{ video.last_featured|simpletimesince }} ago</li>
