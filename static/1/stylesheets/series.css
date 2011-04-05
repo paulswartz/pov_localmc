@@ -25,7 +25,7 @@ body#series #content #series_videos ul.video_list li.video_item .video_item_img 
 
 body#series #content #series_videos ul.video_list li.video_item .video_item_img a em.icon {
   text-align: center;
-  display: block;
+  display: none;
   position: relative;
   top: 60px;
   left: 10px;
@@ -37,6 +37,7 @@ body#series #content #series_videos ul.video_list li.video_item .video_item_img 
 
 body#series #content #series_videos ul.video_list li.video_item .video_item_img a:hover em.icon {
   color: rgba(255,255,255, 0.8);
+	display: block;
 }
 
 body#series #content #video_header {

@@ -48,7 +48,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 <div class="pod">
     <div class="bd">
       {% if category.description %}
-        <p class="category_description"><strong>Category Description:</strong> {{ category.description|safe }}</p>
+        <p class="category_description">{{ category.description|safe }}</p>
       {% endif %}
       <ul class="video_list clear">
         {% for video in video_list %}
