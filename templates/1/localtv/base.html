@@ -136,8 +136,12 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
             {% if user_is_admin %}
             <li id="last" class="signin"><a target="_blank" href="{% url localtv_admin_approve_reject %}">Admin</a></li>
             {% else %}
-            <li id="last" class="signin"><a href="{% url localtv_admin_approve_reject %}">Sign In</a></li>
-            {% endif %}
+                {% if request.user.is_authenticated %}
+                <li id="last" class="signin"><a href="{% url localtv_user_profile %}">Your Profile</a></li>
+                {% else %}
+                <li id="last" class="signin"><a href="{% url localtv_admin_approve_reject %}">Sign In</a></li>
+                {% endif %}
+           {% endif %}
           </ul>
         </div><!-- // subnav -->
         {% endblock %}
@@ -175,7 +179,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
           <li><a href="{% url localtv_about %}">About</a></li>
           {% if request.user.is_authenticated %}<li><a href="{% url localtv_user_profile %}">Your Profile</a></li>{% endif %}
           <li><a href="{% url localtv_goodies_widget %}">Widgets</a></li>
-          {% if user_is_admin %}
+          {% if request.user.is_authenticated %}
           <li class="signin"><a href="{{ settings.LOGOUT_URL }}?next={{ request.META.PATH_INFO }}">Sign Out</a></li>
           {% else %}
           <li class="signin"><a href="{% url localtv_admin_approve_reject %}">Sign In</a></li>
