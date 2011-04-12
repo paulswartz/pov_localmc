@@ -1,0 +1,68 @@
+{% extends "localtv/base.html" %}
+{% comment %}
+Copyright 2009 - Participatory Culture Foundation
+
+This file is part of Miro Community.
+
+Miro Community is free software: you can redistribute it and/or modify it
+under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Miro Community is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
+
+{% load localtv_thumbnail cache %}
+{% load comments filters pagetabs uploadtemplate_tags video_list %}
+{% block body_id %}index{% endblock %}
+{% block body_class %}home{% endblock %}
+
+{% block content %}
+<div id="new_mod" class="pod wfc_pod">
+  <div class="hd">
+    <h2>Remix any of these 8 videos!</h2>
+  </div><!-- // hd -->
+  <div class="bd">
+    <ul class="video_list clear">
+      <li class="video_item contest_about">
+        <p><a href="http://mediatedcultures.net/ksudigg/">Kansas State's Digital Ethnography Project</a> &amp; the <a href="http://cyber.law.harvard.edu/">Berkman Center for Internet &amp; Society at Harvard University</a> invites you to create a short remix video with material from the <a href="http://www.fordfoundation.org/newsroom/events/451">Wired for Change</a> event that shows what you think about digital culture &amp; Internet rights. Enter your video &amp; get a chance to win a free trip to next year's conference!</p> <p><a href="{% url localtv_about %}">More Details <em class="icon">]</em></a></p>
+      </li>
+      {% get_video_list_for_category "original-wired-change-videos" as original_list %}
+      {% for video in original_list|slice:":8" %}
+      <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
+        {% include "localtv/video_listing_individual.html" %}
+      </li>
+      {% endfor %}
+    </ul>
+    <a class="btn_more" href="{% url localtv_category "original-wired-change-videos" %}">See More <em class="icon">]</em></a>
+  </div><!-- // bd -->
+  <div class="clear"></div>
+</div><!-- // video_module -->
+{% get_video_list_for_category "your-remix-submissions" as remix_list %}
+     {% if remix_list.count %}
+<div id="new_mod" class="pod wfc_pod">
+  <div class="hd">
+    <h2>Your Remix Submissions</h2>
+  </div><!-- // hd -->
+  
+   <div class="bd">
+     <ul class="video_list clear">
+       {% for video in remix_list|slice:":8" %}
+       <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
+         {% include "localtv/video_listing_individual.html" %}
+       </li>
+       {% endfor %}
+     </ul>
+     <a class="btn_more" href="{% url localtv_category "your-remix-submissions" %}">See More <em class="icon">]</em></a>
+   </div><!-- // bd -->
+
+  <div class="clear"></div>
+</div><!-- // video_module -->
+{% endif %}
+{% endblock content %}

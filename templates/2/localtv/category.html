@@ -1,0 +1,69 @@
+{% extends "localtv/base.html" %}
+{% comment %}
+Copyright 2009 - Participatory Culture Foundation
+
+This file is part of Miro Community.
+
+Miro Community is free software: you can redistribute it and/or modify it
+under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Miro Community is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
+
+{% load pagetabs %}
+{% block body_id %}category_page{% endblock %}
+{% block body_class %}secondary{% endblock %}
+
+{% block content %}
+
+
+
+{% if category.child_set.count %}
+<h2>Subcategories</h2>
+{% for subcat in category.child_set.all %}
+<a class="top_cat_button" title="{{ subcat.name }}" href="{{ subcat.get_absolute_url }}"><span>{{ subcat.name }}</span></a>
+{% if subcat.child_set.count %}
+{% for subsubcat in subcat.child_set.all %}
+<a href="{{ subsubcat.get_absolute_url }}">{{ subsubcat.name }}</a>
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+
+<div id="rss">
+  <a class="rss" href="{% url localtv_feeds_category category.slug %}"><em class="icon">f</em> RSS</a>
+</div>
+{% if category.name %}
+  <h1 class="page_title">{{ category.name }}</h1>
+{% endif %}
+<div class="pod">
+    <div class="bd">
+      {% if category.description %}
+        <p class="category_description">{{ category.description|safe }}</p>
+      {% endif %}
+      <ul class="video_list clear">
+        {% for video in video_list %}
+          <li class="video_item alt_item" class="clear">
+            {% include "localtv/video_listing_individual.html" %}
+          </li><!-- // video_item -->
+        {% endfor %}
+      </ul>
+    </div><!-- // bd -->
+</div><!-- // pod -->
+
+{% if page_obj.has_other_pages %}
+{% pagetabs page_obj %}
+{% endif %}
+<div class="clear"></div>
+{% endblock %}
+
+

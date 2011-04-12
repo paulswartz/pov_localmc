@@ -29,24 +29,27 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 
 <div id="about_site">
 {% if sitelocation.logo %}
-  <img alt="{{ sitelocation.site.name }} Logo" src="{{ sitelocation.logo.url }}" />
+  <!-- <img alt="{{ sitelocation.site.name }} Logo" src="{{ sitelocation.logo.url }}" /> -->
 {% else %}
-  <img alt="{{ sitelocation.site.name }} Logo" src="{% get_static_url "images/logo.gif" %}" />
+
 {% endif %}
 <h1 class="page_title">About {{ sitelocation.site.name }}</h1>
 {% autoescape off %}
-    {{ sitelocation.about_html }}
+    <p>{{ sitelocation.about_html }}</p>
 {% endautoescape %}
 </div><!-- // about_site -->
 
 <div id="about_miro">
 <h1 class="page_title">{% trans "About Miro Community" %}</h1>
+<img class="logo" style="float:right; margin:-10px 50px 20px; max-width:470px;" alt="Miro Community logo" src="http://www.mirocommunity.org/images/mc_logo.png" width="422" height="65">
 <p>
   {% blocktrans %}
-  <a href="http://www.mirocommunity.org">Miro Community</a> s an easy open source video curation platform. Anyone can quickly embed, organize and display videos from around the internet. Miro Community is developed by the <a
+  <a href="http://www.mirocommunity.org">Miro Community</a> helps
+  communities gather their videos into one place. It's a project of the <a
   href="http://pculture.org">Participatory Culture Foundation</a>.
   {% endblocktrans %}
 </p>
+
 </div>
 
 <div class="clear"></div>

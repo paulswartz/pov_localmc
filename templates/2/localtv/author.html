@@ -1,0 +1,90 @@
+{% extends "localtv/base.html" %}
+{% comment %}
+Copyright 2009 - Participatory Culture Foundation
+
+This file is part of Miro Community.
+
+Miro Community is free software: you can redistribute it and/or modify it
+under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Miro Community is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
+
+{% block body_id %}series{% endblock %}
+{% block body_class %}video{% endblock %}
+
+{% load filters pagetabs uploadtemplate_tags %}
+{% block content %}
+  <div id="video_header" class="clear">
+    <div id="video_header_content" class="clear">
+     <div id="subscribe">
+       <ul class="clear">
+         <li><a id="twitter" <a href="http://twitter.com/?status={% filter urlencode %}I'm watching {% if author.first_name %}{{ author.get_full_name }} ({{ author.username }}){% else %}{{ author.username }}{% endif %} on {{ sitelocation.site.name }}: http://{{sitelocation.site.domain }}{% endfilter %}" target="_blank" >Share on Twitter</a></li>
+         <li id="facebook"><a class="facebook" name="fb_share" type="icon_link" href="http://www.facebook.com/sharer.php">Share on Facebook</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script></li>
+         <li style="display: none;"><a id="miro" href="http://subscribe.getmiro.com/?url1=http%3A//{{ sitelocation.site.domain|urlencode }}{% url localtv_feeds_author author.pk %}">Subscribe with Miro</a></li>
+         <li><a class="rss" href="{% url localtv_feeds_author author.pk %}">RSS</a></li>
+       </ul>
+     </div><!-- // subscribe -->
+      <div id="video_title">
+        <!-- ><h1>{% if author.first_name %}{{ author.get_full_name }} ({{ author.username }}){% else %}{{ author.username }}{% endif %}</h1> -->
+      </div><!-- // video_title -->
+    </div><!-- // video_header_content -->
+  </div><!-- // video_header -->
+
+  <div id="video_container" class="author_port">
+    <div id="video_port" class="clear">
+      {% if author.get_profile.logo %}<div id="profile_pic"><img src="{{ author.get_profile.logo.url }}"></div>{% endif %}
+      <h1>{% if author.first_name %}{{ author.get_full_name }} ({{ author.username }}){% else %}{{ author.username }}{% endif %}</h1> 
+      {% if author.get_profile.location %}<div id="location">{{ author.get_profile.location }}</div>{% endif %}
+      {% if author.get_profile.website %}<div id="link">{{ author.get_profile.website|urlize }}</div>{% endif %}
+      {% if author.get_profile.description %}<div id="description">{{ author.get_profile.description|sanitize }}</div>{% endif %}
+    </div>
+  </div><!-- // video_container -->
+  
+  <div id="content_wrapper">
+    <div id="series_videos">
+    <div class="pod">
+      <div class="hd">
+        <h2>{% if author.first_name %}{{ author.get_full_name }} ({{ author.username }}){% else %}{{ author.username }}{% endif %}</h2>
+      </div><!-- // hd -->
+      <div class="bd">
+      <ul class="video_list clear">
+        {% for video in video_list %}
+        <li class="video_item alt_item" class="clear">
+          {% include "localtv/video_listing_individual.html" %}
+        </li>
+        {% endfor %}
+      </ul>
+      </div><!-- // bd -->
+    </div><!-- // pod -->
+    </div><!-- // series_videos -->
+  
+  <div class="clear">
+    <div class="sidebar" style="display: none;">
+      {% if author.get_profile.description %}
+      <div id="about_author" class="video_side">
+        <h2>About Film Factory</h2>
+        <p>{{ author.get_profile.description|sanitize }}</p>
+      </div><!-- // about_author -->
+      {% endif %}
+      <div id="share_video" class="video_side">
+        <h2>Share Video</h2>
+        <ul>
+          <li id="facebook"><a href="">Share on Facebook</a></li>
+          <li id="twitter"><a href="">Share on Twitter</a></li>
+          <li id="email"><a href="">Email to Friends</a></li>
+        </ul>
+      </div><!-- share_video -->
+    </div><!-- // sidebar -->
+  </div><!-- // clear -->
+  <div class="clear"></div><!-- // clear -->
+  </div><!-- // wrapper -->
+{% endblock %}
