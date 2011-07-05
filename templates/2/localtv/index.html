@@ -31,7 +31,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
   <div class="bd">
     <ul class="video_list clear">
       <li class="video_item contest_about">
-        <p><a href="http://mediatedcultures.net/ksudigg/">Kansas State's Digital Ethnography Project</a> &amp; the <a href="http://cyber.law.harvard.edu/">Berkman Center for Internet &amp; Society at Harvard University</a> invites you to create a short remix video with material from the <a href="http://www.fordfoundation.org/newsroom/events/451">Wired for Change</a> event that shows what you think about digital culture &amp; Internet rights. Enter your video &amp; get a chance to win a free trip to next year's conference!</p> <p><a href="{% url localtv_about %}">More Details <em class="icon">]</em></a></p>
+        <p><a href="http://mediatedcultures.net/ksudigg/">Kansas State's Digital Ethnography Project</a> &amp; the <a href="http://cyber.law.harvard.edu/">Berkman Center for Internet &amp; Society</a> invites you to create a short remix video with material from the <a href="http://www.fordfoundation.org/newsroom/events/451">Wired for Change</a> event that shows what you think about digital culture &amp; Internet rights. Enter your video &amp; get a chance to win a free trip to next year's conference! <a href="{% url localtv_about %}">More Details <em class="icon">]</em></a></p>
       </li>
       {% get_video_list_for_category "original-wired-change-videos" as original_list %}
       {% for video in original_list|slice:":8" %}

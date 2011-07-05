@@ -139,7 +139,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
                 {% if request.user.is_authenticated %}
                 <li id="last" class="signin"><a href="{% url localtv_user_profile %}">Your Profile</a></li>
                 {% else %}
-                <li id="last" class="signin"><a href="{% url localtv_admin_approve_reject %}">Sign In</a></li>
+                <li id="last" class="signin"><a href="{{ settings.LOGIN_URL }}?next={{ request.META.PATH_INFO }}">Sign In</a></li>
                 {% endif %}
            {% endif %}
           </ul>
@@ -160,6 +160,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
     {% if not request.is_ajax %}
     <div id="content" class="clear">
       <div id="wrapper" class="clear">
+       
 	{% endif %}
         {% block content %}
         {% endblock content %}
@@ -182,7 +183,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
           {% if request.user.is_authenticated %}
           <li class="signin"><a href="{{ settings.LOGOUT_URL }}?next={{ request.META.PATH_INFO }}">Sign Out</a></li>
           {% else %}
-          <li class="signin"><a href="{% url localtv_admin_approve_reject %}">Sign In</a></li>
+          <li class="signin"><a href="{{ settings.LOGIN_URL }}?next={{ request.META.PATH_INFO }}">Sign In</a></li>
           {% endif %}
         </ul>
         

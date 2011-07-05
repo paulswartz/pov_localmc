@@ -12,6 +12,24 @@ body.secondary h1.page_title {
 	margin: 0 0 10px 0;
 }
 
+body.secondary div#subscribe {
+	float: right;
+}
+
+body.secondary div#subscribe ul li {
+	float: left;
+	display: block;
+	margin: 0 0 0 25px;
+}
+
+body.secondary div#subscribe a {
+	font-size: 14px;
+}
+
+body.secondary div#subscribe a em.icon {
+	font-size: 16px;
+}
+
 body.secondary div#rss {
 	float: right;
 }
@@ -54,6 +72,10 @@ body.secondary ul.pagetabs li.selected a:hover span {
 	background: #d1d1d1;
 	border-color: #d1d1d1;
 	color: #999;
+}
+
+body.secondary #category_videos .bd {
+	padding: 25px 10px 15px 10px;
 }
 
 body#about_page #about_site img {

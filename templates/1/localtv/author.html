@@ -27,7 +27,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
     <div id="video_header_content" class="clear">
      <div id="subscribe">
        <ul class="clear">
-         <li><a id="twitter" <a href="http://twitter.com/?status={% filter urlencode %}I'm watching {% if author.first_name %}{{ author.get_full_name }} ({{ author.username }}){% else %}{{ author.username }}{% endif %} on {{ sitelocation.site.name }}: http://{{sitelocation.site.domain }}{% endfilter %}" target="_blank" >Share on Twitter</a></li>
+         <li><a id="twitter" href="http://twitter.com/?status={% filter urlencode %}I'm watching {% if author.first_name %}{{ author.get_full_name }} ({{ author.username }}){% else %}{{ author.username }}{% endif %} on {{ sitelocation.site.name }}: http://{{sitelocation.site.domain }}{% endfilter %}" target="_blank" >Share on Twitter</a></li>
          <li id="facebook"><a class="facebook" name="fb_share" type="icon_link" href="http://www.facebook.com/sharer.php">Share on Facebook</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script></li>
          <li style="display: none;"><a id="miro" href="http://subscribe.getmiro.com/?url1=http%3A//{{ sitelocation.site.domain|urlencode }}{% url localtv_feeds_author author.pk %}">Subscribe with Miro</a></li>
          <li><a class="rss" href="{% url localtv_feeds_author author.pk %}">RSS</a></li>

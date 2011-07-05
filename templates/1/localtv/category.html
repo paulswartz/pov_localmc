@@ -18,14 +18,16 @@ You should have received a copy of the GNU Affero General Public License
 along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
-{% load pagetabs %}
+{% load pagetabs filters video_list %}
+
 {% block body_id %}category_page{% endblock %}
-{% block body_class %}secondary{% endblock %}
-
+{% block body_class %}secondary {{ category.slug }}{% endblock %}
+{% block head %}
+<meta name="title" content="Disposable Film Festival - Pittsburgh" />
+<meta name="description" content="he Disposable Film Festival is coming to Pittsburgh, celebrating the creative potential of disposable video: short films made on everyday equipment like cell phones, pocket cameras, and other inexpensive video capture devices." />
+{% endblock %}
 {% block content %}
-
-
-
+<div id="sub_category">
 {% if category.child_set.count %}
 <h2>Subcategories</h2>
 {% for subcat in category.child_set.all %}
@@ -37,15 +39,91 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 {% endif %}
 {% endfor %}
 {% endif %}
+</div><!-- // sub_category -->
 
+<div id="subscribe">
+  <ul class="clear">
+    <li><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://bit.ly/disposable-film-fest-pgh" data-text="Check out The Disposable Film Festival - Pittsburgh at @pghonvideo" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></li>
+    <li id="facebook"><a class="facebook" name="fb_share" type="icon_link" href="http://www.facebook.com/sharer.php">Share on Facebook</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script></li>
+    <li><a class="rss" href="{% url localtv_feeds_category category.slug %}">RSS</a></li>
+  </ul>
+</div><!-- // subscribe -->
 
 <div id="rss">
-  <a class="rss" href="{% url localtv_feeds_category category.slug %}"><em class="icon">f</em> RSS</a>
-</div>
+  <a class="rss" href="{% url localtv_feeds_category category.slug %}">RSS</a>
+</div><!-- // subscribe -->
+
 {% if category.name %}
   <h1 class="page_title">{{ category.name }}</h1>
 {% endif %}
-<div class="pod">
+
+<div id="contest_content" class="clear">
+  <div class="pod" id="contest_welcome">
+    <div class="bd">
+      <div id="welcome_img"></div>
+      <p>The <strong>Disposable Film Festival</strong> is coming to Pittsburgh, celebrating the creative potential of disposable video: short films made on everyday equipment like cell phones, pocket cameras, and other inexpensive video capture devices.</p> 
+
+      <p>Pittsburgh on Video will host a screening of the Disposable Film Festival featuring films from around the world plus a local competition where you can enter your film for us to showcase. POV will gives prizes to a People’s Choice voted on by the public on this site as well as a judges selection for Best of Festival.</p>
+
+      <p>Shoot‘em, Edit‘em, and be sure to Share’em on the site by June 30, 2011. We will be showing them in August at bike-in which will be announced shortly.</p>
+    </div><!-- // bd -->
+  </div><!-- // welcome -->
+  
+  <div id="enter_video">
+    <a href="">Enter your video</a>
+  </div>
+  
+  {% get_video_list_for_category "disposable-film-fest-pgh" as film_list %}
+  {% if film_list.count %}
+  <div class="pod" id="category_videos">
+      <div class="bd">
+        <ul class="video_list clear">
+          {% for video in film_list|slice:":9" %}
+           <li class="video_item alt_item" class="clear">
+             {% include "localtv/video_listing_individual.html" %}
+           </li>
+           {% endfor %}
+        </ul>
+      </div><!-- // bd -->
+  </div><!-- // pod -->
+  {% endif %}
+  
+  <div class="pod" id="contest_rules">
+    <div class="bd">
+      <h2 id="guidelines"><em class="icon"></em> Guidelines</h2>
+      <ul>
+        <li>Disposable media must be central and integral to the film.</li>
+        <li>Acceptable devices include: webcams, cell phones, point and shoot cameras, disposable video cameras, screen capture software, pocket cams (like Flips) - you get the point. Unsure if your device is ok to use? Contact us.</li>
+        <li>Use of multiple devices is encouraged but by no means necessary.</li>
+        <li>Submissions must be under 10 minutes.</li>
+        <li>You must upload your film to YouTube, Vimeo, or BlipTV and submit to the Pittsburgh on Video site with the tag DFF-PGH by June 30, 2011.</li>
+        <li>If selected, the filmmaker will be contacted and must provide an uncompressed version of the film via our ftp so that we can show your film at the festival.</li>
+        <li>Filmmakers are responsible for their usage of restricted or copyrighted material. (DFF, Pittsburgh on Video or The Pittsburgh Foundation are not liable for any copyright material unlawfully used)</li>
+      </ul>
+    </div><!-- // bd -->
+  </div><!-- // rules -->
+  
+  <div class="pod" id="contest_judging">
+    <div class="bd">
+      <h2 id="criteria"><em class="icon"></em> Selection Criteria</h2>
+
+      <p>Selections will be equally judged on the inventive and experimental use of the media as well as
+      the content of the film.</p>
+
+      <h2 id="judging"><em class="icon"></em> Judging</h2>
+
+      <p>A judging panel of local filmmakers, video producers, and other community members will select
+      the Best in Festival. A People’s Choice Award will also be presented to the film that receives the most votes on the Pittsburgh on Video website.</p>
+
+      <h2 id="prizes"><em class="icon"></em> Prizes</h2>
+
+      <p>Prizes will be announced shortly.</p>
+    </div><!-- // bd -->
+  </div><!-- // rules -->
+  <p id="photo_credit">Contest photo courtesy of <a href="http://www.flickr.com/photos/87719210@N00/3526434869/">*ChArLiE 2011(^:*</a></p>
+</div><!-- // contest_banner -->
+
+<div class="pod" id="category_videos">
     <div class="bd">
       {% if category.description %}
         <p class="category_description">{{ category.description|safe }}</p>
