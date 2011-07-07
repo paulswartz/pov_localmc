@@ -19,7 +19,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
 
-{% load video i18n comments filters uploadtemplate_tags editable_widget localtv_thumbnail email_share_tags cache video_list %}
+{% load video i18n comments filters uploadtemplate_tags editable_widget localtv_thumbnail email_share_tags cache video_list voting_tags %}
 
 {% block body_id %}video{% endblock %}
 {% block body_class %}video{% endblock %}
@@ -62,13 +62,25 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
       <a id="miro" href="http://subscribe.getmiro.com/?url1=http%3A//{{ sitelocation.site.domain|urlencode }}{{ new_rss|urlencode }}"><em class="icon">f</em> Subscribe with Miro</a>
     </div><!-- // subscribe -->
     {% endcomment %}
+    {% if current_video.voting_enabled %}
     <div id="vote_contest">
-      <a class="vote_this" href="">Vote for this video</a>
-      {% comment %}
-      <a class="voted" href="">Thanks for voting!</a>
-      {% endcomment %}
-      <span id="contest_details_txt"><a href="">Contest Details</a></span>
+      {% vote_by_user user on current_video as vote %}
+      {% if not vote %}
+      {% if not user_can_vote %}
+      <span class="voted_elsewhere">Thanks for voting!</span>
+      {% else %}
+      <a rel="#overlay" class="vote_this" href="{% url localtv_video_vote current_video.pk "up" %}">Vote for this video</a>
+      {% endif %}
+      {% else %}
+      <span class="voted">Thanks for your vote!</span>
+      {% endif %}
+      {% if vote %}
+      <span id="vote_cancel"><a rel="#overlay" href="{% url localtv_video_vote current_video.pk "clear" %}">Cancel</a></span>
+      {% else %}
+      <span id="contest_details_txt"><a href="{{ contest_category.get_absolute_url }}">Contest Details</a></span>
+      {% endif %}
     </div><!-- vote_contest -->
+    {% endif %}
     
       <div id="video_title">
         {% if user_is_admin %}

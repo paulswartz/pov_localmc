@@ -18,7 +18,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
 
-{% load comments i18n localtv_thumbnail filters uploadtemplate_tags editors_comment %}
+{% load comments i18n localtv_thumbnail filters uploadtemplate_tags editors_comment voting_tags %}
 
 
 
@@ -46,10 +46,18 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
         {% endif %}</li>
         <li class="contributed clear">{% with video as instance %}{% include "localtv/inline_edit/video_authors.html" %}{% endwith %}</li>
       </ul>
+      {% if video.voting_enabled %}
       <div class="contest_vote_btn">
-        {% comment %}<a class="vote_this" href="">Vote for this video</a>{% endcomment %}
-        
-        <a class="voted" href="">Vote for this video</a>
-        
+        {% if user_can_vote %}
+        {% vote_by_user user on video as vote %}
+        {% if not vote %}
+        <a rel="#overlay" class="vote_this" href="{% url localtv_video_vote video.pk "up" %}">Vote for this video</a>
+        {% else %}
+        <a rel="#overlay" class="voted" href="{% url localtv_video_vote video.pk "clear" %}">Thanks for voting!</a>
+        {% endif %}
+        {% else %}
+        <span class="voted_elsewhere">Thanks for voting!</span>
+        {% endif %}
+      {% endif %}
       </div>
     </div><!-- // video_meta -->

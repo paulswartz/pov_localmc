@@ -183,3 +183,11 @@ body.disposable-film-fest-pgh ul.video_list li.video_item .video_meta .contest_v
 	text-indent: -99999px;
 	display: block;
 }
+
+body.disposable-film-fest-pgh ul.video_list li.video_item .video_meta .contest_vote_btn span.voted_elsewhere {
+	width: 266px;
+	height: 45px;
+	background: transparent url(../images/btn_vote_contest.png) 0 -180px no-repeat;
+	text-indent: -99999px;
+	display: block;
+}

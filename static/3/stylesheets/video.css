@@ -378,7 +378,7 @@ body.video #content #video_header_content #vote_contest a:active.vote_this {
 	background-position: 0 -90px;
 }
 
-body.video #content #video_header_content #vote_contest a.voted {
+body.video #content #video_header_content #vote_contest span.voted {
 	width: 266px;
 	height: 45px;
 	background: transparent url(../images/btn_vote_contest.png) 0 -135px no-repeat;
@@ -386,19 +386,33 @@ body.video #content #video_header_content #vote_contest a.voted {
 	display: block;
 }
 
+body.video #content #video_header_content #vote_contest span.voted_elsewhere {
+	width: 266px;
+	height: 45px;
+	background: transparent url(../images/btn_vote_contest.png) 0 -180px no-repeat;
+	text-indent: -99999px;
+	display: block;
+}
+
+body.video #content #video_header_content #vote_contest span#vote_cancel,
 body.video #content #video_header_content #vote_contest span#contest_details_txt {
-	background: transparent url(../images/icon_contest_details.png) right 9px no-repeat;
 	padding: 10px 20px 0 0;
 	display: block;
 	text-align: right;
+    
+}
+body.video #content #video_header_content #vote_contest span#contest_details_txt {
+	background: transparent url(../images/icon_contest_details.png) right 9px no-repeat;
 }
 
+body.video #content #video_header_content #vote_contest span#vote_cancel a,
 body.video #content #video_header_content #vote_contest span#contest_details_txt a {
 	color: #333;
 	font-size: 12px;
 	font-weight: bold;
 }
 
+body.video #content #video_header_content #vote_contest span#vote_cancel a:hover,
 body.video #content #video_header_content #vote_contest span#contest_details_txt a:hover {
 	text-decoration: underline;
 }
