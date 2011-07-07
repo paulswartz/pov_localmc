@@ -1,0 +1,36 @@
+/* Homepage */
+
+#featured_videos {
+  padding: 20px;
+}
+
+#featured_videos .pagination {
+  margin: 10px 0 -15px 0;
+  border-top: 1px #CCC solid;
+  padding: 10px 0 0 0;
+}
+
+#featured_videos h1 {
+  margin: 0 0 20px 0;
+}
+
+#featured_videos .video_meta {
+  width: 495px;
+}
+
+#featured_videos #slideshow .facebook_container {
+  width: 225px;
+  float: right;
+  margin: -35px 0 0 0;
+}
+
+.video_module {
+  width: 600px;
+  float: left;
+}
+
+.sidebar {
+  float: left;
+  width: 322px;
+  margin-left: 16px;
+}

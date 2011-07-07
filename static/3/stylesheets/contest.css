@@ -1,0 +1,185 @@
+body.disposable-film-fest-pgh #sub_category, #contest_content, #subscribe {
+	display: none;
+}
+
+body.disposable-film-fest-pgh #contest_content, body.disposable-film-fest-pgh #subscribe,
+body.disposable-film-fest-pgh #contest_content #category_videos {
+	display: block;
+}
+
+body.disposable-film-fest-pgh #rss, body.disposable-film-fest-pgh #category_videos {
+	display: none;
+}
+
+body.disposable-film-fest-pgh #header {
+  background: #00273f;
+  background: -webkit-gradient(linear, left top, left bottom, from(#004772), to(#00273f)) no-repeat;
+  background: -moz-linear-gradient(top,                            #004772,     #00273f) no-repeat;
+  background: #00273f url(../images/header_bg.jpg) center top no-repeat !important;
+  height: 150px !important;
+}
+
+body.disposable-film-fest-pgh h1.site_logo {
+  max-width: 450px;
+  float: left;
+  margin: -20px 0 -10px 0;
+}
+
+body.disposable-film-fest-pgh #header #social_connect {
+  display: none;
+}
+
+body.disposable-film-fest-pgh h1.page_title {
+	width: 262px;
+	height: 64px;
+	background: transparent url(../images/pov_contest_logo.png) 0 0 no-repeat;
+	text-indent: -99999px;
+}
+
+body.disposable-film-fest-pgh #subscribe {
+	position: relative;
+	top: 25px;
+}
+
+body.disposable-film-fest-pgh #contest_content {
+	padding: 10px 0 10px 0;
+}
+
+body.disposable-film-fest-pgh #contest_content #contest_welcome #welcome_img {
+	width: 350px;
+	height: 265px;
+	background: transparent url(../images/contest_film_cam.jpg) 0 0 no-repeat;
+	float: left;
+	margin: 0 20px 0 0;
+	border: 2px #BBB solid;
+}
+
+body.disposable-film-fest-pgh #contest_content .pod .bd p {
+	line-height: 25px;
+	color: #656565;
+	font-size: 15px;
+	margin: 10px 0 10px 0;
+}
+
+body.disposable-film-fest-pgh #contest_content .pod .bd p strong {
+	font-weight: bold;
+}
+
+body.disposable-film-fest-pgh #contest_content #enter_video {
+	width: 200px;
+	margin: 25px auto;
+}
+
+body.disposable-film-fest-pgh #contest_content #enter_video a {
+	width: 219px;
+	height: 41px;
+	background: transparent url(../images/btn_enter_contest.png) 0 0 no-repeat;
+	text-indent: -99999px;
+	display: block;
+}
+
+body.disposable-film-fest-pgh #contest_content #enter_video a:hover {
+  background-position: 0 -41px;
+}
+
+body.disposable-film-fest-pgh #contest_content #enter_video a:active {
+  background-position: 0 -82px;
+}
+
+body.disposable-film-fest-pgh #contest_content #contest_rules {
+	width: 465px;
+	float: left;
+	margin: 0 20px 0 0;
+}
+
+body.disposable-film-fest-pgh #contest_content #contest_rules ul li {
+	font-size: 15px;
+	line-height: 25px;
+	margin: 10px 0 10px 25px;
+	color: #656565;
+	list-style-type: disc;
+}
+
+body.disposable-film-fest-pgh #contest_content #contest_judging {
+	width: 465px;
+	float: left;
+}
+
+h2#prizes, h2#judging, h2#criteria, h2#guidelines {
+	line-height: 50px;
+	font-size: 20px;
+	color: #004f7f;
+}
+
+h2#prizes em.icon, h2#judging em.icon,
+h2#criteria em.icon, h2#guidelines em.icon {
+	width: 31px;
+	height: 42px;
+	display: block;
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+h2#guidelines {
+	line-height: 45px;
+}
+
+h2#guidelines em.icon {
+	width: 43px;
+	background: transparent url(../images/icon_contest.png) -138px 0 no-repeat;
+}
+
+h2#prizes em.icon {
+	width: 42px;
+	background: transparent url(../images/icon_contest.png) -70px 0 no-repeat;
+}
+
+h2#judging em.icon {
+	width: 41px;
+	background: transparent url(../images/icon_contest.png) -216px 0 no-repeat;
+}
+
+h2#criteria em.icon {
+	background: transparent url(../images/icon_contest.png) 0 0 no-repeat;
+}
+
+body.disposable-film-fest-pgh #contest_content p#photo_credit {
+	font-size: 9px;
+}
+
+body.disposable-film-fest-pgh ul.video_list li.video_item .video_meta h2 {
+	height: 50px;
+}
+
+body.disposable-film-fest-pgh ul.video_list li.video_item {
+	height: 320px;
+}
+
+body.disposable-film-fest-pgh ul.video_list li.video_item .video_meta .contest_vote_btn {
+	margin: 20px 0 0 2px;
+	display: block;
+}
+
+body.disposable-film-fest-pgh ul.video_list li.video_item .video_meta .contest_vote_btn a.vote_this {
+	width: 266px;
+	height: 45px;
+	background: transparent url(../images/btn_vote_contest.png) 0 0 no-repeat;
+	text-indent: -99999px;
+	display: block;
+}
+
+body.disposable-film-fest-pgh ul.video_list li.video_item .video_meta .contest_vote_btn a:hover.vote_this {
+	background-position: 0 -45px;
+}
+
+body.disposable-film-fest-pgh ul.video_list li.video_item .video_meta .contest_vote_btn a:active.vote_this {
+	background-position: 0 -90px;
+}
+
+body.disposable-film-fest-pgh ul.video_list li.video_item .video_meta .contest_vote_btn a.voted {
+	width: 266px;
+	height: 45px;
+	background: transparent url(../images/btn_vote_contest.png) 0 -135px no-repeat;
+	text-indent: -99999px;
+	display: block;
+}

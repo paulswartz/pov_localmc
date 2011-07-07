@@ -1,0 +1,53 @@
+{% extends "localtv/base.html" %}
+{% comment %}
+Copyright 2009 - Participatory Culture Foundation
+
+This file is part of Miro Community.
+
+Miro Community is free software: you can redistribute it and/or modify it
+under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Miro Community is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
+
+{% load pagetabs %}
+{% block body_class %}secondary{% endblock %}
+{% block content %}
+
+<div style="margin: -10px 0 10px 0;" class="clear">
+{% block pagination %}
+{% pagetabs page_obj %}
+{% endblock pagination %}
+</div><!-- // clear -->
+
+<div class="pod">
+  <div class="hd">
+    <div id="rss">
+      <a class="rss" href="{% block rss_url %}{% endblock %}"><em class="icon">f</em> RSS</a>
+    </div>
+    <h2>{% block page_title %}Page Title{% endblock %}</h2>
+  </div><!-- // hd -->
+    <div class="bd">
+      <ul class="video_list clear">
+        {% for video in video_list %}
+          <li class="video_item alt_item" class="clear">
+            {% include "localtv/video_listing_individual.html" %}
+          </li><!-- // -->
+        {% endfor %}
+      </ul>
+  </div><!-- // bd -->
+</div><!-- // pod -->
+
+{% block pagination2 %}
+{% pagetabs page_obj %}
+{% endblock %}
+<div class="clearfix"></div>
+{% endblock content %}
