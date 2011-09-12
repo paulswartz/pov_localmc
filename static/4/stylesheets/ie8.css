@@ -1,0 +1,6 @@
+em.icon { display: none !important; }
+
+.pagination a#left_arrow,
+.pagination a#right_arrow {
+	display: none !important;
+}

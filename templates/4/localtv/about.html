@@ -1,0 +1,53 @@
+{% extends "localtv/base.html" %}
+{% comment %}
+Copyright 2009 - Participatory Culture Foundation
+
+This file is part of Miro Community.
+
+Miro Community is free software: you can redistribute it and/or modify it
+under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Miro Community is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
+
+
+{% load i18n uploadtemplate_tags %}
+
+{% block title %}{{ block.super }} - {% trans "About" %}{% endblock %}
+
+{% block body_id %}about_page{% endblock %}
+{% block body_class %}secondary{% endblock %}
+{% block content %}
+
+<div id="about_site">
+{% if sitelocation.logo %}
+  <img alt="{{ sitelocation.site.name }} Logo" src="{{ sitelocation.logo.url }}" />
+{% else %}
+  <img alt="{{ sitelocation.site.name }} Logo" src="{% get_static_url "images/logo.gif" %}" />
+{% endif %}
+<h1 class="page_title">About {{ sitelocation.site.name }}</h1>
+{% autoescape off %}
+    {{ sitelocation.about_html }}
+{% endautoescape %}
+</div><!-- // about_site -->
+
+<div id="about_miro">
+<h1 class="page_title">{% trans "About Miro Community" %}</h1>
+<p>
+  {% blocktrans %}
+  <a href="http://www.mirocommunity.org">Miro Community</a> s an easy open source video curation platform. Anyone can quickly embed, organize and display videos from around the internet. Miro Community is developed by the <a
+  href="http://pculture.org">Participatory Culture Foundation</a>.
+  {% endblocktrans %}
+</p>
+</div>
+
+<div class="clear"></div>
+{% endblock %}

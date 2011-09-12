@@ -1,0 +1,184 @@
+body#series #content #series_videos {
+  margin: 20px 0 0 0;
+}
+
+body#series #content #series_videos .pod .bd {
+  padding-bottom: 0;
+}
+
+body#series #content #series_videos ul.video_list li.video_item {
+
+}
+
+body#series #content #series_videos ul.video_list li.video_item .video_item_img a {
+}
+
+body#series #content #series_videos ul.video_list li.video_item h2 {
+  font-size: 13px;
+  line-height: 15px;
+}
+
+body#series #content #series_videos ul.video_list li.video_item .video_item_img a img {
+  -webkit-border-radius: 5px;
+  -moz-border-radius:    5px;
+}
+
+body#series #content #series_videos ul.video_list li.video_item .video_item_img a em.icon {
+  text-align: center;
+  display: none;
+  position: relative;
+  top: 60px;
+  left: 10px;
+  color: rgba(255,255,255, 0.4);
+  line-height: 0;
+  height: 0;
+  font-size: 60px;
+}
+
+body#series #content #series_videos ul.video_list li.video_item .video_item_img a:hover em.icon {
+  color: rgba(255,255,255, 0.8);
+	display: block;
+}
+
+body#series #content #video_header {
+  width: 100%;
+  margin: 0 auto -10px auto;
+  padding: 30px 0 35px 0;
+	background: #EEE !important
+}
+
+body#series #content #video_title h1 {
+  font-size: 25px;
+}
+
+body#series #content #video_container #video_port {
+	position: relative;
+	height: 300px;
+}
+
+body#series #content #video_container #video_port h1 {
+	color: #FFF;
+	position: absolute;
+	top: 85px;
+	left: 85px;
+	font-size: 45px;
+	text-shadow: 0 0 6px rgba(0,0,0, 0.4);
+}
+
+body#series #content #subscribe {
+  float: right;
+  margin: 5px 0 0 0;
+}
+
+body#series #content #subscribe ul li {
+	float: left;
+	margin: 0 0 0 20px;
+}
+
+body#series #content #subscribe ul li a {
+	font-size: 13px;
+	position: relative;
+}
+
+body#series #content #subscribe ul li a em.icon {
+	line-height: 10px;
+	position: relative;
+	top: 1px;
+}
+
+body#series #content #subscribe ul li a#miro em.icon {
+	font-size: 16px;
+	top: -1px;
+}
+
+body#series #content #subscribe ul li a#twitter, body#series #content #subscribe ul li a#facebook {
+	padding: 0 0 0 30px;
+}
+
+body#series #content #subscribe ul li a#twitter em.icon {
+	background: url(../images/icon_twitter_white.png) 0 0 no-repeat;
+	width: 18px;
+	height: 18px;
+}
+
+body#series #content #subscribe ul li a#facebook em.icon {
+	background: url(../images/icon_facebook_white.png) 0 0 no-repeat;
+	width: 19px;
+	height: 19px;
+}
+
+body#series #content #subscribe ul li a#twitter em.icon,
+body#series #content #subscribe ul li a#facebook em.icon {
+	background-color: #005d8c;
+	display: block;
+  text-indent: -999999px;
+  opacity: 1.0;
+  position: absolute;
+  top: -1px;
+  left: 0px;
+}
+
+body#series #content #subscribe ul li a#twitter:hover em.icon,
+body#series #content #subscribe ul li a#facebook:hover em.icon {
+	background-color: #7e0f34;
+}
+
+body#series #content #video_interact {
+	margin: 0 0 20px 0;
+}
+
+body#series #content .author_port {
+	background: #FFF;
+	border-bottom: 1px #DDD solid;
+}
+
+body#series #content .author_port #video_port {
+	height: auto !important;
+	background: #FFF;
+	padding: 18px 0 17px 0;
+	width: auto !important;
+}
+
+body#series #content .author_port #video_port #profile_pic img {
+	width: 250px;
+	float: left;
+	margin: 0 15px 0 0;
+}
+
+body#series #content .author_port #video_port h1 {
+	position: relative !important;
+	top: 0px !important;
+	left: 0px !important;
+	color: #7e0000 !important;
+	text-shadow: 0 0 0 !important;
+	font-size: 24px !important;
+	margin: 0 20px 0 20px;
+}
+
+body#series #content .author_port #video_port #location {
+	font-weight: bold;
+	color: #444;
+	font-size: 14px;
+	margin: 10px 0 10px 0;
+}
+
+body#series #content .author_port #video_port #description p {
+	font-size: 16px;
+	line-height: 26px;
+	color: #555;
+	margin: 10px 0 0 0;
+}
+
+body.author #content {
+	background: transparent url(../images/secondary_bg.png) 0 0 repeat-y !important;
+}
+
+body.author #maincol {
+	width: 679px;
+	float: right !important;
+}
+
+body.author #sidebar {
+	width: 300px !important;
+	float: left !important;
+}

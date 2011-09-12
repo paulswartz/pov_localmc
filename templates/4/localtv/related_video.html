@@ -1,0 +1,38 @@
+{% comment %}
+Copyright 2009 - Participatory Culture Foundation
+
+This file is part of Miro Community.
+
+Miro Community is free software: you can redistribute it and/or modify it
+under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Miro Community is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
+
+{% load comments i18n localtv_thumbnail filters uploadtemplate_tags %}
+  {% if video.has_thumbnail %}
+    <div class="video_item_img">
+      <a href="{{ video.get_absolute_url }}{{ video_url_extra }}"><em class="icon">9</em><div style="background: url({% get_thumbnail_url video 364 271 %}) center no-repeat; width: 190px; height: 135px;-webkit-border-radius: 5px; -moz-border-radius:    5px; -webkit-background-clip: padding-box;"></div></a>
+    </div><!-- // video_item_img -->
+    {% else %}
+    <div class="video_item_img">
+      <a href="{{ video.get_absolute_url }}{{ video_url_extra }}"><em class="icon">9</em><div style="background: url({% get_static_url "/images/default_vid.gif" %}) center no-repeat; width: 190px; height: 135px;-webkit-border-radius: 5px; -moz-border-radius:    5px; -webkit-background-clip: padding-box;"></div></a>
+    </div><!-- // video_item_img -->
+  {% endif %}
+  
+  <div class="video_meta">
+    <h2><a href="{{ video.get_absolute_url }}">{% if video.name %}{{ video.name|slice:":57" }}</a></h2>
+      {% else %}
+      {% endif %}
+      <ul class="meta_list">
+        <li class="contributed clear">{% with video as instance %}{% include "localtv/inline_edit/video_authors.html" %}{% endwith %}</li>
+      </ul><!-- // meta_list -->
+  </div><!-- // video_meta -->
