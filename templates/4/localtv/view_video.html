@@ -56,12 +56,15 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
   
   <div id="video_header" class="clear">
     <div id="video_header_content" class="clear">
-    {% comment %}
     <div id="subscribe">
-      <a id="rss" href="{{ new_rss }}"><em class="icon">f</em> Subscribe to RSS</a>
-      <a id="miro" href="http://subscribe.getmiro.com/?url1=http%3A//{{ sitelocation.site.domain|urlencode }}{{ new_rss|urlencode }}"><em class="icon">f</em> Subscribe with Miro</a>
+      <ul>
+        <ul>
+          <li id="facebook"><a class="facebook" name="fb_share" type="icon_link" href="http://www.facebook.com/sharer.php">Share on Facebook</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script></li>
+          <li id="twitter"><a href="http://twitter.com/?status={% filter urlencode %}I'm watching {{ current_video.name|slice:":47" }}{% ifnotequal current_video.name current_video.name|slice:":47" %}...{% endifnotequal %} on {{ sitelocation.site.name }}: http://{{sitelocation.site.domain }}{% url localtv_view_video video_id=current_video.pk slug="" %}{% endfilter %}" target="_blank" class="twitter">Share on Twitter</a></li>
+          <li id="email"><a href="{% get_email_share_url_for current_video %}" rel="#overlay" class="email">Email to Friends</a></li>
+        </ul>
+      </ul>
     </div><!-- // subscribe -->
-    {% endcomment %}
     
       <div id="video_title">
         {% if user_is_admin %}
@@ -75,15 +78,26 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
           {% endif %}
         </h1>
       {% endif %}
-        <span id="contributed">
+        <div id="contributed">
+        <ul>
           {% if user_is_admin %}
+          <li id="video_author">
             {% editable_widget current_video "authors" %}
           {% else %}
             {% with current_video as instance %}
               {% include "localtv/inline_edit/video_authors.html" %}
             {% endwith %}
+          </li><!-- // video_author -->
           {% endif %}
+          
+          {% with current_video.authors.all.0 as author %}
+          <li id="author_organization">
+            {{ author.get_profile.location }}
+          </li><!-- // author_organization -->
+          {% endwith %}
+          
           {% if user_is_admin %}
+          <li id="video_published" class="last">
             {% editable_widget current_video "when_published" %}
           {% else %}
             {% with current_video as instance %}
@@ -91,8 +105,10 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
               {% include "localtv/inline_edit/video_when_published.html" %}
             {% endfilter %}
           {% endwith %}
+          </li><!-- // video_published -->
           {% endif %}
-        </span>
+        </ul>
+        </div><!-- // contributed -->
         </div><!-- // video_title -->
       </div><!-- // video_header_content -->
     </div><!-- // video_header -->
@@ -156,10 +172,6 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
               <p>No Description</p>
             {% endif %}<!-- // current_video.description -->
             {% endif %}<!-- // if user_is_admin.description -->
-            
-            {% if current_video.website_url %}
-              <div><a id="original_video" href="{{ current_video.website_url }}"><em class="icon">A</em> See video on its original page</a></div>
-            {% endif %}<!-- // current_video.website_url -->
           </div><!-- // video_description -->
           
           <div id="video_tags">
@@ -373,6 +385,18 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
       </div><!-- // video_interact -->
       
       <div class="sidebar">
+        <div id="video_sidebar_meta">
+          <ul>
+            <li id="video_date"><strong>Date:</strong> <em>January, 1st, 2012</em></li>
+            <li id="video_views"><strong>Views:</strong> <em>2,728,913</em></li>
+            <li id="video_duration"><strong>Duration:</strong> <em>1:20:23</em></li>
+            {% if current_video.website_url %}
+              <li><a id="original_video" href="{{ current_video.website_url }}"><em class="icon">A</em> See video on its original page</a></li>
+            {% endif %}<!-- // current_video.website_url -->
+            <li><a href=""><em class="icon">A</em> Download mp4 file</a></li>
+            <li><a href=""><em class="icon">A</em> Download Audio Podcast</a></li>
+          </ul>
+        </div><!-- // video_meta -->
         {% if current_video.authors.count %}
         {% with current_video.authors.all.0 as author %}
         {% if author.get_profile.description %}
@@ -470,6 +494,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
           {% endif %}
 	      </div><!-- // playlist -->
 	      </div><!-- // clear -->
+	      {% comment %}
         <div id="share_video" class="video_side">
           <h2>Share Video</h2>
             <ul>
@@ -478,6 +503,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
               <li id="email"><a href="{% get_email_share_url_for current_video %}" rel="#overlay" class="email">Email to Friends</a></li>
             </ul>
           </div><!-- share_video -->
+          {% endcomment %}
       </div><!-- // sidebar -->
       </div><!-- // clear -->
       <div class="clear"></div><!-- // clear -->

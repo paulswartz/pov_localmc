@@ -34,6 +34,8 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
     </div><!-- // slides -->
   </div><!-- // slides -->
     <div class="pagination">
+      <a id="left_arrow" href="">[</a>
+      <a id="right_arrow" href="">]</a>
       <ul class="pagination_slides clear">
         <li class="current"><a href="#first">Page 1</a></li>
         <li><a href="#second">Page 2</a></li>
@@ -41,24 +43,27 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
         <li><a href="#fourth">Page 4</a></li>
         <li><a href="#fifth">Page 5</a></li>
       </ul>
+      
     </div><!-- // slideshow_pages -->
+   
   </div><!-- // slideshow -->
 </div><!-- // featured_videos -->
 
 <div class="clear">
   <div id="tabs_module">
   <ul class="tabbed_mod clear">
-    <li><a href="#artculture_mod">Art &amp; Culture</a></li>
-    <li><a href="#digitalearning_mod">Digital Learning</a></li>
-    <li><a href="#entertainment_mod">Entertainment</a></li>
-    <li><a href="#aroundtown_mod">Around Town</a></li>
-    <li><a href="#nonprofitnews_mod">Nonprofit News</a></li>
+    <li><a href="#artculture_mod">Latest</a></li>
+    <li><a href="#digitalearning_mod">Most Watched</a></li>
+    <li><a href="#entertainment_mod">Creativity &amp; Innovation</a></li>
+    <li><a href="#aroundtown_mod">Globalization</a></li>
+    <li><a href="#nonprofitnews_mod">Team &amp; Culture</a></li>
+    <li><a href="#entertainment_mod">Creativity &amp; Innovation</a></li>
   </ul>
     {% comment %}
     <div id="new_mod" class="video_module tabbed_pod pod">
       <ul class="video_list clear">
           {% for video in new_videos|slice:":12" %}
-          <li class="video_item {% cycle '' 'alt_item' %}" class="clear">
+          <li class="video_item {% cycle '2' 'alt_item' %}" class="clear">
             {% include "localtv/video_listing_individual.html" %}
           </li>
           {% endfor %}

@@ -53,12 +53,12 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
 </div><!-- // sidebar -->
 <div id="maincol">
   <div id="video_container" class="author_port">
-    <div id="video_port" class="clear">
+    <div id="video_port" class="author_info clear">
       {% if author.get_profile.logo %}<div id="profile_pic"><img src="{{ author.get_profile.logo.url }}"></div>{% endif %}
       <h1>{% if author.first_name %}{{ author.get_full_name }} ({{ author.username }}){% else %}{{ author.username }}{% endif %}</h1>
-      {% if author.get_profile.location %}<div id="location">{{ author.get_profile.location }}</div>{% endif %}
-      {% if author.get_profile.website %}<div id="link">{{ author.get_profile.website|urlize }}</div>{% endif %}
-      {% if author.get_profile.description %}<div id="description">{{ author.get_profile.description|sanitize }}</div>{% endif %}
+      {% if author.get_profile.location %}<div id="author_location">{{ author.get_profile.location }}</div>{% endif %}
+      {% if author.get_profile.website %}<div id="author_link">{{ author.get_profile.website|urlize }}</div>{% endif %}
+      {% if author.get_profile.description %}<div id="author_description">{{ author.get_profile.description|sanitize }}</div>{% endif %}
     </div>
   </div><!-- // video_container -->
   

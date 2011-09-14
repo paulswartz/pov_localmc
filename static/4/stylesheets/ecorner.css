@@ -219,6 +219,7 @@ Main Navigation
   -webkit-border-top-left-radius:  4px;
   -moz-border-radius-topright:     4px;
   -moz-border-radius-topleft:      4px;
+	color: #777;
 }
 
 .tabbed_mod li#active a {
@@ -230,6 +231,7 @@ Main Navigation
   border-bottom: 0;
   background: #FFF;
   opacity: 1.0;
+	color: #555;
 }
 
 .text_tabs {

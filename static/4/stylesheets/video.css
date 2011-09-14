@@ -51,31 +51,46 @@ body.video #content #video_title {
   float: left;
 }
 
+body.video #content #video_title h2 {
+	font-size: 25px;
+	margin: 0 0 10px 0;
+}
+
+body.video #content div#contributed ul li {
+	font-size: 14px;
+	float: left;
+	margin: 0 10px 0 0;
+	padding: 0 10px 0 0;
+	border-right: 1px #BBB solid;
+}
+
+body.video #content div#contributed ul li.last {
+	border: 0;
+}
+
+body.video #content div#contributed ul li#author_organization {
+	font-weight: bold;
+	color: #555;
+}
+
 body.video #content #subscribe {
   float: right;
-  margin: 18px 0 0 0;
+	margin: 15px 20px 0 0;
 }
 
-body.video #content #subscribe a {
-  font-size: 13px;
+body.video #content #subscribe ul li {
+	float: left;
+	margin: 0 0 0 15px;
 }
 
-body.video #content #subscribe a#miro {
-  margin: 0 0 0 35px;
-}
-
-body.video #content #subscribe a#miro, body.video #content #subscribe a#miro .icon {
-  color: #af3844;
-}
-
-body.video #content #subscribe a:hover#miro, body.video #content #subscribe a:hover#miro .icon {
-  color: #a85a62;
+body.video #content #subscribe ul li a {
+	font-size: 13px;
 }
 
 h1#title_video {
   font-size: 25px !important;
   letter-spacing: -1px;
-  margin: 0 0 10px 0;
+  
 }
 
 body.video #content span#contributed, body.video #content span#comments {
@@ -262,8 +277,34 @@ body.video #content .sidebar {
   margin: 5px 0 0 60px;
 }
 
+#video_sidebar_meta {
+	margin: 0 0 20px 0;
+}
+
+#video_sidebar_meta ul li {
+	margin: 8px 0 8px 0;
+}
+
+#video_sidebar_meta ul li strong {
+	
+	color: #555;
+}
+
+#video_sidebar_meta ul li em {
+	color: #333;
+	font-weight: bold;
+}
+
+#video_sidebar_meta ul li a {
+	font-size: 13px;
+}
+
+#video_sidebar_meta ul li a em.icon {
+	font-size: 12px;
+}
+
 body.video #content .video_side {
-  margin: 0 0 20px 0;
+  margin: 0 0 10px 0;
 }
 
 body.video #content .video_side h2 {
@@ -276,8 +317,8 @@ body.video #content .video_side h2 {
 }
 
 body.video #content .video_side p {
-  font-size: 15px;
-  line-height: 32px;
+  font-size: 14px;
+  line-height: 24px;
 }
 
 body.video #content #about_author .img {
