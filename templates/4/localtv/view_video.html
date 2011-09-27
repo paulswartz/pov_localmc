@@ -158,6 +158,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
         <ul class="tabbed_mod text_tabs clear">
           <li class="ui-state-default"><a href="#video_description"><em class="icon">p</em> Description</a></li>
           <li><a href="#video_tags"><em class="icon">z</em> Tags</a></li>
+          {% if current_video.embed_code %}<li><a href="#video_embed"><em class="icon">z</em> Embed Code</a></li>{% endif %}
           {% get_comment_count for current_video as comment_count %}
           <li><a href="#video_comments"><em class="icon">q</em> {% if comment_count %}{{ comment_count }} Comment{{ comment_count|pluralize }}{% else %} Add a Comment {% endif %}</a></li>
         </ul>
@@ -189,6 +190,12 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
               {% endif %}<!-- // if current_video.tags.exists -->
             {% endif %}<!-- // if user_is_admin -->
           </div><!-- // tags -->
+
+          {% if current_video.embed_code %}
+          <div id="video_embed">
+            <textarea rows=8 cols=40>{{ current_video.embed_code|escape }}</textarea>
+          </div>
+          {% endif %}
           
           <div id="video_comments" class="comment_mod">
               {% get_comment_list for current_video as comments %}
