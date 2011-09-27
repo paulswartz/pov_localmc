@@ -160,7 +160,7 @@ along with Miro Community.  If not, see <http://www.gnu.org/licenses/>.
           <li><a href="#video_tags"><em class="icon">z</em> Tags</a></li>
           {% if current_video.embed_code %}<li><a href="#video_embed"><em class="icon">z</em> Embed Code</a></li>{% endif %}
           {% get_comment_count for current_video as comment_count %}
-          <li><a href="#video_comments"><em class="icon">q</em> {% if comment_count %}{{ comment_count }} Comment{{ comment_count|pluralize }}{% else %} Add a Comment {% endif %}</a></li>
+          <li><a href="#video_comments"><em class="icon">e</em> {% if comment_count %}{{ comment_count }} Comment{{ comment_count|pluralize }}{% else %} Add a Comment {% endif %}</a></li>
         </ul>
         <div class="tabbed_pod">
           <div id="video_description">
