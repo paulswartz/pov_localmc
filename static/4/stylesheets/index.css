@@ -1,0 +1,51 @@
+/* Homepage */
+
+#featured_videos {
+  padding: 15px 30px 0 20px;
+	background: transparent url(../images/featured_bg.png) 0 0 no-repeat;
+	height: 277px;
+	margin: -20px 0 0 0;
+	border-top: 1px #FFF solid;
+}
+
+#featured_videos .pagination {
+  margin: 2px 0 0 0;
+  padding: 10px 0 0 0;
+}
+
+#featured_videos .pagination .pagination_slides {
+	background: #FFF;
+	padding: 10px 10px 7px 10px;
+	width: 85px !important;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border: 1px #CCC solid;
+	border-bottom: 1px #FFF solid;
+}
+
+#featured_videos h1 {
+  margin: 0 0 20px 0;
+}
+
+#featured_videos .video_meta {
+  width: 500px;
+}
+
+#featured_videos #slideshow .facebook_container {
+  width: 225px;
+  float: right;
+  margin: -35px 20px 0 0;
+}
+
+.video_module {
+  width: 960px;
+  float: left;
+}
+
+.sidebar {
+  float: left;
+  width: 322px;
+  margin-left: 16px;
+}
